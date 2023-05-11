@@ -11,6 +11,10 @@ const ProductsSchema = mongoose.Schema({
     category: {type: String},
     outOfStock: {type: Boolean},
     color: { type: String },
+    size: {type: String},
+    height: {type: String},
+    width: {type: String},
+    legth: {type: String},
 })
 
 const ProductsModel = mongoose.model("Products", ProductsSchema);
