@@ -15,6 +15,7 @@ const ProductsSchema = mongoose.Schema({
     height: {type: String},
     width: {type: String},
     legth: {type: String},
+    god_name: {type: String},
 })
 
 const ProductsModel = mongoose.model("Products", ProductsSchema);
