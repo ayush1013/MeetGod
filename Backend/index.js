@@ -3,9 +3,15 @@ const app = express();
 const cors = require("cors");
 require("dotenv").config();
 const {connection} = require("./Config/config.js");
+const productsRoute = require("./Routes/ProductsRoute.js");
+const adminRoute = require("./Routes/AdminRoute.js")
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/products", productsRoute);
+
+app.use("/admin", adminRoute);
 
 app.get("/", async (req, res) => {
     res.send("Welcom to Home Page")
