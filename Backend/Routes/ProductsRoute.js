@@ -10,7 +10,7 @@ productsRoute.get("/", async(req,res)=>{
         if(find){
             let products = await ProductsModel.find({
                 title: {$regex: find, $options: "i"}
-            })
+            }).limit(limit).skip(limit*(page-1));
             res.send(products)
         }else{
             let products = await ProductsModel.find().limit(limit).skip(limit*(page-1));

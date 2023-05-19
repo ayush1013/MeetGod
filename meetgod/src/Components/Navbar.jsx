@@ -25,6 +25,7 @@ import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import SettingsRoundedIcon from "@material-ui/icons/SettingsRounded";
 import React, { useState } from "react";
+import {Link} from "react-router-dom"
 
 const Navbar = () => {
   const [section, setSection] = useState("home");
@@ -94,11 +95,6 @@ const Navbar = () => {
               gridTemplateColumns="repeat(2,1fr)"
               rowGap={"20px"}
             >
-              {/* <Text>Home</Text>
-              <Text>My Posts</Text>
-              <Text>Spritual</Text>
-              <Text>Shop</Text>
-              <Text>Cart</Text> */}
               <Box
                 onClick={() => setSection("home")}
                 value="home"
@@ -249,6 +245,7 @@ const Navbar = () => {
         ml={{base:"10%", md: "10%", lg: "16%"}}
         cursor={"pointer"}
       >
+        <Link to="/">
         <Box
           onClick={() => setSection("home")}
           value="home"
@@ -270,6 +267,9 @@ const Navbar = () => {
             Home
           </Text>
         </Box>
+        </Link>
+      
+      <Link to="/posts">
         <Box
           onClick={() => setSection("post")}
           value="post"
@@ -291,7 +291,9 @@ const Navbar = () => {
             My Posts
           </Text>
         </Box>
-
+        </Link>
+        
+      <Link to="/spiritual" >
         <Box
           onClick={() => setSection("spiritual")}
           value="spiritual"
@@ -313,6 +315,7 @@ const Navbar = () => {
             Spiritual
           </Text>
         </Box>
+        </Link>
         <Box
           onClick={() => setSection("profile")}
           value="profile"
@@ -334,6 +337,8 @@ const Navbar = () => {
             Profile
           </Text>
         </Box>
+
+        <Link to="/products">
         <Box
           onClick={() => setSection("shop")}
           value="shop"
@@ -355,7 +360,9 @@ const Navbar = () => {
             Shop
           </Text>
         </Box>
-
+        </Link>
+        
+        <Link to="cart" >
         <Box
           onClick={() => setSection("cart")}
           value="cart"
@@ -377,6 +384,7 @@ const Navbar = () => {
             Cart
           </Text>
         </Box>
+        </Link>
       </Flex>
     </Flex>
   );
