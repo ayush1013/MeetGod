@@ -43,11 +43,15 @@ const Navbar = () => {
       bgColor="white"
       boxSizing="borderBox"
       boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px"
+      zIndex={10}
+      position={"sticky"}
+      top="0"
     >
       <Flex w={{ base: "90%", md: "auto", lg: "auto" }}>
         <Image
           src="meetgod-logo.png"
-          w={{ base: "50px", md: "65px", lg: "65" }}
+          w={{ base: "48px", md: "62px", lg: "62px" }}
+          borderRadius={"15%"}
         />
         <Flex
           alignItems={"center"}

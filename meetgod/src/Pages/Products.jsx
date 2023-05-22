@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CarouselComponent from "../Components/Carousel";
 import {
   Box,
+  Button,
   Flex,
   Grid,
   GridItem,
@@ -13,6 +14,8 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../Redux/ProductsReducer/action";
+import FilterSortBar from "../Components/FilterSortBar";
+import Pagination from "../Components/Pagination";
 
 const Products = () => {
   const data = useSelector((store) => store.productReducer.products);
@@ -31,68 +34,75 @@ const Products = () => {
   }, []);
 
   return (
-    <Box>
+    <Box  >
       <CarouselComponent />
-      <Box
-        w={{ base: "0px", md: "200px", lg: "260px" }}
-        mt="40px"
-        h="100vh"
-        bgColor={"white"}
-        borderRight={"2px solid #DDDDDD"}
-        boxSizing="borderBox"
-        p="20px"
-        ml="30px"
-      >
-        <Box>
-          <Text
-            fontSize={"20px"}
-            fontWeight={"bold"}
-            h="35px"
-            borderBottom={"2px solid #DDDDDD"}
-          >
-            Sort By
-          </Text>
-
-          <Grid rowGap={"5px"} mt="10px">
-            <Flex gap="5px">
-              <input type="radio" name="sortp" />
-              <label> Price - Low to High </label>
-            </Flex>
-            <Flex gap="5px">
-              <input
-                type="radio"
-                name="sortp"
-                style={{ backgroundColor: "red" }}
-              />
-              <label> Price - High to Low </label>
-            </Flex>
-          </Grid>
-          <Grid columnGap={"5px"} rowGap={"5px"} mt="10px">
-            <Flex gap="5px">
-              <input type="radio" name="sortA" />
-              <label> Title - A to Z </label>
-            </Flex>
-            <Flex gap="5px">
-              <input type="radio" name="sortA" />
-              <label> Title - Z to A </label>
-            </Flex>
-          </Grid>
-        </Box>
-        <Box>
-        <Text
-            fontSize={"20px"}
-            fontWeight={"bold"}
-            h="35px"
-            borderBottom={"2px solid #DDDDDD"}
-            mt="20px"
-          >
-            Filter
-          </Text>
-        </Box>
-      </Box>
-      {data.map((elem) => {
-        return <div>{elem.category}</div>;
-      })}
+      <Flex>
+        <FilterSortBar />
+        <Grid
+          m="auto"
+          mt={{ base: "20px", md: "30px", lg: "40px" }}
+          ml={{ md: "30px", lg: "40px" }}
+          gridTemplateColumns={{
+            base: "repeat(1,1fr)",
+            md: "repeat(2,1fr)",
+            lg: "repeat(3,1fr)",
+          }}
+          w={{ base: "95%", md: "68%", lg: "75%" }}
+          // border="1px solid black"
+          gap={{ base: "20px", md: "25px", lg: "30" }}
+          bgColor={"white"}
+          p="20px"
+        >
+          {data.map((elem) => {
+            return (
+              <Box 
+                key={elem._id} 
+                // border="1px solid black" 
+                p="5px">
+                <Image
+                  src={elem.image}
+                  h={{ base: "auto", md: "200px", lg: "200px" }}
+                  m="auto"
+                />
+                <Box
+                  mt={"5px"}
+                  // border={"1px solid black"}
+                  h={{ md: "", lg: "80px" }}
+                >
+                  <Text
+                    fontSize={{ base: "22px", md: "18px", lg: "18px" }}
+                    fontWeight={"bold"}
+                  >
+                    {elem.title}
+                  </Text>
+                  <Text
+                    fontSize={{ base: "20px", md: "16px", lg: "16px" }}
+                    color={"green"}
+                    fontWeight={"bold"}
+                  >
+                    ₹{elem.price}
+                  </Text>
+                </Box>
+                <Button
+                  m="auto"
+                  display={"block"}
+                  bgGradient="linear(to-l, #F79200, #F4C50F, #F79200)"
+                  w="75%"
+                  mt="5px"
+                  _hover={{ opacity: 0.7 }}
+                  _focus={{ outline: "none" }}
+                  borderRadius={"40px"}
+                  borderBottomRadius={"none"}
+                  color="white"
+                >
+                  Add to Cart
+                </Button>
+              </Box>
+            );
+          })}
+        </Grid>
+      </Flex>
+      <Pagination/>
     </Box>
   );
 };
