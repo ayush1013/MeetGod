@@ -25,12 +25,19 @@ import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import SettingsRoundedIcon from "@material-ui/icons/SettingsRounded";
 import React, { useState } from "react";
-import {Link} from "react-router-dom"
+import {
+  Link,
+  useLocation
+} from "react-router-dom";
 
 const Navbar = () => {
-  const [section, setSection] = useState("home");
+  const location = useLocation();
+  const route = location.pathname;
+  const [section, setSection] = useState(route || "/");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+
+  console.log("sec", route);
 
   console.log(section);
 
@@ -92,37 +99,36 @@ const Navbar = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader fontSize={"18px"} >Create your account / Login</DrawerHeader>
+          <DrawerHeader fontSize={"18px"}>
+            Create your account / Login
+          </DrawerHeader>
 
           <DrawerBody>
-            <Grid
-              gridTemplateColumns="repeat(2,1fr)"
-              rowGap={"20px"}
-            >
+            <Grid gridTemplateColumns="repeat(2,1fr)" rowGap={"20px"}>
               <Box
-                onClick={() => setSection("home")}
-                value="home"
+                onClick={() => setSection("/")}
+                value="/"
                 textAlign={"center"}
               >
                 <HomeIcon
                   style={{
-                    color: section == "home" ? "black" : "#666666",
+                    color: section == "/" ? "black" : "#666666",
                     fontSize: "32px",
                     // marginBottom: "-8px",
                   }}
                 />
                 <Text
-                  color={section == "home" ? "black" : "#666666"}
+                  color={section == "/" ? "black" : "#666666"}
                   textAlign={"center"}
                   // fontSize={"12px"}
-                  borderBottom={section == "home" ? "2px solid black" : "none"}
+                  borderBottom={section == "/" ? "2px solid black" : "none"}
                 >
                   Home
                 </Text>
               </Box>
               <Box
-                onClick={() => setSection("post")}
-                value="post"
+                onClick={() => setSection("/post")}
+                value="/post"
                 textAlign={"center"}
               >
                 <PostAddSharpIcon
@@ -143,8 +149,8 @@ const Navbar = () => {
               </Box>
 
               <Box
-                onClick={() => setSection("spiritual")}
-                value="spiritual"
+                onClick={() => setSection("/spiritual")}
+                value="/spiritual"
                 textAlign={"center"}
               >
                 <SpaIcon
@@ -167,8 +173,8 @@ const Navbar = () => {
               </Box>
 
               <Box
-                onClick={() => setSection("shop")}
-                value="shop"
+                onClick={() => setSection("/shop")}
+                value="/shop"
                 textAlign={"center"}
               >
                 <ShoppingCartIcon
@@ -189,8 +195,8 @@ const Navbar = () => {
               </Box>
 
               <Box
-                onClick={() => setSection("cart")}
-                value="cart"
+                onClick={() => setSection("/cart")}
+                value="/cart"
                 textAlign={"center"}
               >
                 <LocalMallIcon
@@ -211,8 +217,8 @@ const Navbar = () => {
               </Box>
 
               <Box
-                onClick={() => setSection("profile")}
-                value="profile"
+                onClick={() => setSection("/profile")}
+                value="/profile"
                 textAlign={"center"}
               >
                 <SettingsRoundedIcon
@@ -235,159 +241,157 @@ const Navbar = () => {
               </Box>
             </Grid>
           </DrawerBody>
-          <DrawerFooter >
-              <Button w="100%">
-                Logout
-              </Button>
-            </DrawerFooter>
+          <DrawerFooter>
+            <Button w="100%">Logout</Button>
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
 
       <Flex
         display={{ base: "none", md: "flex", lg: "flex" }}
-        gap={{base:"30px", md: "30px", lg: "40px"}}
-        ml={{base:"10%", md: "10%", lg: "16%"}}
+        gap={{ base: "30px", md: "30px", lg: "40px" }}
+        ml={{ base: "10%", md: "10%", lg: "16%" }}
         cursor={"pointer"}
       >
         <Link to="/">
-        <Box
-          onClick={() => setSection("home")}
-          value="home"
-          textAlign={"center"}
-        >
-          <HomeIcon
-            style={{
-              color: section == "home" ? "black" : "#666666",
-              fontSize: "32px",
-              marginBottom: "-8px",
-            }}
-          />
-          <Text
-            color={section == "home" ? "black" : "#666666"}
+          <Box
+            onClick={() => setSection("/")}
+            value="/"
             textAlign={"center"}
-            fontSize={"12px"}
-            borderBottom={section == "home" ? "2px solid black" : "none"}
           >
-            Home
-          </Text>
-        </Box>
+            <HomeIcon
+              style={{
+                color: section == "/" ? "black" : "#666666",
+                fontSize: "32px",
+                marginBottom: "-8px",
+              }}
+            />
+            <Text
+              color={section == "/" ? "black" : "#666666"}
+              textAlign={"center"}
+              fontSize={"12px"}
+              borderBottom={section == "/" ? "2px solid black" : "none"}
+            >
+              Home
+            </Text>
+          </Box>
         </Link>
-      
-      <Link to="/posts">
-        <Box
-          onClick={() => setSection("post")}
-          value="post"
-          textAlign={"center"}
-        >
-          <PostAddSharpIcon
-            style={{
-              color: section == "post" ? "black" : "#666666",
-              fontSize: "32px",
-              marginBottom: "-8px",
-            }}
-          />
-          <Text
-            color={section == "post" ? "black" : "#666666"}
+
+        <Link to="/posts">
+          <Box
+            onClick={() => setSection("/posts")}
+            value="/posts"
             textAlign={"center"}
-            fontSize={"12px"}
-            borderBottom={section == "post" ? "2px solid black" : "none"}
           >
-            My Posts
-          </Text>
-        </Box>
+            <PostAddSharpIcon
+              style={{
+                color: section == "/posts" ? "black" : "#666666",
+                fontSize: "32px",
+                marginBottom: "-8px",
+              }}
+            />
+            <Text
+              color={section == "/posts" ? "black" : "#666666"}
+              textAlign={"center"}
+              fontSize={"12px"}
+              borderBottom={section == "/posts" ? "2px solid black" : "none"}
+            >
+              My Posts
+            </Text>
+          </Box>
         </Link>
-        
-      <Link to="/spiritual" >
-        <Box
-          onClick={() => setSection("spiritual")}
-          value="spiritual"
-          textAlign={"center"}
-        >
-          <SpaIcon
-            style={{
-              color: section == "spiritual" ? "black" : "#666666",
-              fontSize: "32px",
-              marginBottom: "-8px",
-            }}
-          />
-          <Text
-            color={section == "spiritual" ? "black" : "#666666"}
+
+        <Link to="/spiritual">
+          <Box
+            onClick={() => setSection("/spiritual")}
+            value="/spiritual"
             textAlign={"center"}
-            fontSize={"12px"}
-            borderBottom={section == "spiritual" ? "2px solid black" : "none"}
           >
-            Spiritual
-          </Text>
-        </Box>
+            <SpaIcon
+              style={{
+                color: section == "/spiritual" ? "black" : "#666666",
+                fontSize: "32px",
+                marginBottom: "-8px",
+              }}
+            />
+            <Text
+              color={section == "/spiritual" ? "black" : "#666666"}
+              textAlign={"center"}
+              fontSize={"12px"}
+              borderBottom={section == "/spiritual" ? "2px solid black" : "none"}
+            >
+              Spiritual
+            </Text>
+          </Box>
         </Link>
         <Box
-          onClick={() => setSection("profile")}
-          value="profile"
+          onClick={() => setSection("/profile")}
+          value="/profile"
           textAlign={"center"}
         >
           <AccountBoxIcon
             style={{
-              color: section == "profile" ? "black" : "#666666",
+              color: section == "/profile" ? "black" : "#666666",
               fontSize: "32px",
               marginBottom: "-8px",
             }}
           />
           <Text
-            color={section == "profile" ? "black" : "#666666"}
+            color={section == "/profile" ? "black" : "#666666"}
             textAlign={"center"}
             fontSize={"12px"}
-            borderBottom={section == "profile" ? "2px solid black" : "none"}
+            borderBottom={section == "/profile" ? "2px solid black" : "none"}
           >
             Profile
           </Text>
         </Box>
 
         <Link to="/products">
-        <Box
-          onClick={() => setSection("shop")}
-          value="shop"
-          textAlign={"center"}
-        >
-          <ShoppingCartIcon
-            style={{
-              color: section == "shop" ? "black" : "#666666",
-              fontSize: "32px",
-              marginBottom: "-8px",
-            }}
-          />
-          <Text
-            color={section == "shop" ? "black" : "#666666"}
+          <Box
+            onClick={() => setSection("/products")}
+            value="/products"
             textAlign={"center"}
-            fontSize={"12px"}
-            borderBottom={section == "shop" ? "2px solid black" : "none"}
           >
-            Shop
-          </Text>
-        </Box>
+            <ShoppingCartIcon
+              style={{
+                color: section == "/products" ? "black" : "#666666",
+                fontSize: "32px",
+                marginBottom: "-8px",
+              }}
+            />
+            <Text
+              color={section == "/products" ? "black" : "#666666"}
+              textAlign={"center"}
+              fontSize={"12px"}
+              borderBottom={section == "/products" ? "2px solid black" : "none"}
+            >
+              Shop
+            </Text>
+          </Box>
         </Link>
-        
-        <Link to="cart" >
-        <Box
-          onClick={() => setSection("cart")}
-          value="cart"
-          textAlign={"center"}
-        >
-          <LocalMallIcon
-            style={{
-              color: section == "cart" ? "black" : "#666666",
-              fontSize: "32px",
-              marginBottom: "-8px",
-            }}
-          />
-          <Text
-            color={section == "cart" ? "black" : "#666666"}
-            fontSize={"12px"}
+
+        <Link to="cart">
+          <Box
+            onClick={() => setSection("/cart")}
+            value="/cart"
             textAlign={"center"}
-            borderBottom={section == "cart" ? "2px solid black" : "none"}
           >
-            Cart
-          </Text>
-        </Box>
+            <LocalMallIcon
+              style={{
+                color: section == "/cart" ? "black" : "#666666",
+                fontSize: "32px",
+                marginBottom: "-8px",
+              }}
+            />
+            <Text
+              color={section == "/cart" ? "black" : "#666666"}
+              fontSize={"12px"}
+              textAlign={"center"}
+              borderBottom={section == "/cart" ? "2px solid black" : "none"}
+            >
+              Cart
+            </Text>
+          </Box>
         </Link>
       </Flex>
     </Flex>

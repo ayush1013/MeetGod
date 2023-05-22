@@ -5,7 +5,7 @@ export const getData = ()=> (dispatch)=>{
     dispatch({type: types.GET_DATA_REQUEST});
     axios.get("https://sleepy-clam-kimono.cyclic.app/products")
         .then((res)=>{
-            console.log("data from action",res.data);
+            console.log("data from action",res);
             dispatch({type: types.GET_DATA_SUCCESS, payload:res.data});
         })
         .catch((err)=>{
