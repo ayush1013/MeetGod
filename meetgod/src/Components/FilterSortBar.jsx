@@ -1,17 +1,56 @@
 import { Box, Flex, Text, Grid } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
-function FilterSortBar() {
+function FilterSortBar({page}) {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const initialCategory = searchParams.getAll("category");
+  const initialSort = searchParams.get("sort");
+  const initialOrder = searchParams.get("order");
+
+  const [category, setCategory] = useState( initialCategory || []);
+  const [sort, setSort] = useState(initialSort || "");
+  const [order, setOrder] = useState(initialOrder || "");
+  
+  const handleCheckbox = (e)=>{
+    const newCategory = [...category];
+    if(newCategory.includes(e.target.value)){
+      newCategory.splice(newCategory.indexOf(e.target.value), 1);
+    }else{
+      newCategory.push(e.target.value);
+    }
+    setCategory(newCategory);
+  }
+
+  // console.log(category);
+
+  const handleSort = (e)=>{
+    setOrder(e.target.value);
+  }
+
+  // console.log("searchParams",initialSort);
+
+  useEffect(()=>{
+    let params = {};
+    params.category = category
+    order && (params.sort = "price");
+    order && (params.order = order)
+    params.page = page;
+    setSearchParams(params);
+  },[order,category,page]);
+
   return (
     <Box
       display={{ base: "none", md: "block", lg: "block" }}
       w={{ base: "0px", md: "210px", lg: "18%" }}
-      mt={{md:"30px",lg:"40px"}}
+      mt={{ md: "30px", lg: "40px" }}
       h="100vh"
       bgColor={"white"}
       borderRight={"2px solid #DDDDDD"}
       boxSizing="borderBox"
       p="20px"
-      ml={{md:"20px",lg:"30px"}}
+      ml={{ md: "20px", lg: "30px" }}
       zIndex={5}
       position={"sticky"}
       top="65px"
@@ -26,16 +65,28 @@ function FilterSortBar() {
           Sort By
         </Text>
 
-        <Grid rowGap={"5px"} mt="10px" borderBottom={"1px solid #DDDDDD"} pb="5px">
+        <Grid
+          rowGap={"5px"}
+          mt="10px"
+          borderBottom={"1px solid #DDDDDD"}
+          pb="5px"
+          onChange={handleSort}
+        >
           <Flex gap="5px">
-            <input type="radio" name="sortp" />
+            <input 
+              type="radio" 
+              name="sortp" 
+              value="asc"
+              defaultChecked={order === "asc"}
+            />
             <Text> Price - Low to High </Text>
           </Flex>
           <Flex gap="5px">
             <input
               type="radio"
               name="sortp"
-              style={{ backgroundColor: "red" }}
+              value="desc"
+              defaultChecked={order === "desc"}
             />
             <Text> Price - High to Low </Text>
           </Flex>
@@ -65,72 +116,72 @@ function FilterSortBar() {
           <Flex gap="5px" mt="10px">
             <input
               type="checkbox"
-              // checked={category.includes("Novel")}
+              checked={category.includes("book")}
               value="book"
-              // onChange={handleCheckbox}
+              onChange={handleCheckbox}
             />
             <Text>Books</Text>
           </Flex>
           <Flex gap="5px">
             <input
               type="checkbox"
-              // checked={category.includes("Motivational")}
+              checked={category.includes("statue")}
               value="statue"
-              // onChange={handleCheckbox}
+              onChange={handleCheckbox}
             />
             <Text>Murti</Text>
           </Flex>
           <Flex gap="5px">
             <input
               type="checkbox"
-              // checked={category.includes("Science_Fiction")}
+              checked={category.includes("artwork")}
               value="artwork"
-              // onChange={handleCheckbox}
+              onChange={handleCheckbox}
             />
             <Text>Art-Works</Text>
           </Flex>
           <Flex gap="5px">
             <input
               type="checkbox"
-              // checked={category.includes("Thriller")}
+              checked={category.includes("frame")}
               value="frame"
-              // onChange={handleCheckbox}
+              onChange={handleCheckbox}
             />
             <Text>Frame</Text>
           </Flex>
           <Flex gap="5px">
             <input
               type="checkbox"
-              // checked={category.includes("Thriller")}
+              checked={category.includes("locket")}
               value="locket"
-              // onChange={handleCheckbox}
+              onChange={handleCheckbox}
             />
             <Text>Locket</Text>
           </Flex>
           <Flex gap="5px">
             <input
               type="checkbox"
-              // checked={category.includes("Thriller")}
+              checked={category.includes("kada")}
               value="kada"
-              // onChange={handleCheckbox}
+              onChange={handleCheckbox}
             />
             <Text>Kada</Text>
           </Flex>
           <Flex gap="5px">
             <input
               type="checkbox"
-              // checked={category.includes("Thriller")}
+              checked={category.includes("audio")}
               value="audio"
-              // onChange={handleCheckbox}
+              onChange={handleCheckbox}
             />
             <Text>Bhajan</Text>
           </Flex>
           <Flex gap="5px">
             <input
               type="checkbox"
-              // checked={category.includes("Thriller")}
+              checked={category.includes("jewellery")}
               value="jewellery"
-              // onChange={handleCheckbox}
+              onChange={handleCheckbox}
             />
             <Text>Jewellery</Text>
           </Flex>

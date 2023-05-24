@@ -37,9 +37,9 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
-  console.log("sec", route);
+  // console.log("sec", route);
 
-  console.log(section);
+  // console.log(section);
 
   return (
     <Flex
