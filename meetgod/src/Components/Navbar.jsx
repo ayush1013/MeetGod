@@ -25,10 +25,7 @@ import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import SettingsRoundedIcon from "@material-ui/icons/SettingsRounded";
 import React, { useState } from "react";
-import {
-  Link,
-  useLocation
-} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const location = useLocation();
@@ -36,10 +33,9 @@ const Navbar = () => {
   const [section, setSection] = useState(route || "/");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+  const [isHover, setIsHover] = useState(false);
 
-  // console.log("sec", route);
-
-  // console.log(section);
+  console.log(isHover && "Hello!");
 
   return (
     <Flex
@@ -254,11 +250,7 @@ const Navbar = () => {
         cursor={"pointer"}
       >
         <Link to="/">
-          <Box
-            onClick={() => setSection("/")}
-            value="/"
-            textAlign={"center"}
-          >
+          <Box onClick={() => setSection("/")} value="/" textAlign={"center"}>
             <HomeIcon
               style={{
                 color: section == "/" ? "black" : "#666666",
@@ -318,7 +310,9 @@ const Navbar = () => {
               color={section == "/spiritual" ? "black" : "#666666"}
               textAlign={"center"}
               fontSize={"12px"}
-              borderBottom={section == "/spiritual" ? "2px solid black" : "none"}
+              borderBottom={
+                section == "/spiritual" ? "2px solid black" : "none"
+              }
             >
               Spiritual
             </Text>
@@ -328,6 +322,8 @@ const Navbar = () => {
           onClick={() => setSection("/profile")}
           value="/profile"
           textAlign={"center"}
+          onMouseOver={() => setIsHover(true)}
+          onMouseOut={() => setIsHover(false)}
         >
           <AccountBoxIcon
             style={{
@@ -345,6 +341,38 @@ const Navbar = () => {
             Profile
           </Text>
         </Box>
+
+        {isHover && (
+          <Box
+            w={"20%"}
+            position={"absolute"}
+            top={"65px"}
+            ml="140px"
+            borderRadius={"0.5rem"}
+            backgroundColor={"white"}
+            zIndex={"10"}
+            boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px"}
+            fontSize={"0.8rem"}
+            fontWeight={"bold"}
+            p={"0.7rem"}
+            onMouseOver={() => setIsHover(true)}
+            onMouseOut={() => setIsHover(false)}
+          >
+            <Flex justify={"space-between"} w={"95%"}>
+              <Box>Order Summary</Box>
+              <Box> Item</Box>
+            </Flex>
+            <Box
+              textAlign={"center"}
+              mt={"1rem"}
+              color={"#FF6F61"}
+              _hover={{ color: "#FF6900" }}
+            >
+              <Link to="/cart">PROCEED TO CART</Link>
+            </Box>
+          </Box>
+        )}
+        
 
         <Link to="/products">
           <Box
