@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../Components/Navbar";
 
 const SingleProduct = () => {
   return (
-    <div>SingleProduct</div>
-  )
-}
+    <div>
+      <Navbar />
+      SingleProduct
+    </div>
+  );
+};
 
-export default SingleProduct
+export default SingleProduct;

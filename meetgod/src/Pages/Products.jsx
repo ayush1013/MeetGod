@@ -18,28 +18,45 @@ import FilterSortBar from "../Components/FilterSortBar";
 import Pagination from "../Components/Pagination";
 import ProductsList from "../Components/ProductsList";
 import { useSearchParams } from "react-router-dom";
+import Navbar from "../Components/Navbar";
+import MobNav from "../Components/MobNav";
 
 const Products = () => {
-  const {currentPage,totalPages} = useSelector((store) => store.productReducer.products);
+  const { currentPage, totalPages } = useSelector(
+    (store) => store.productReducer.products
+  );
   const [searchParams, setSearchParams] = useSearchParams();
   const initialPage = searchParams.get("page");
 
-  const [page, setPage] = useState( initialPage || 1);
+  const [page, setPage] = useState(initialPage || 1);
 
-  const handlePageChange = (newPage)=>{
+  const handlePageChange = (newPage) => {
     setPage(newPage);
-  }
+  };
 
   // console.log("initialPage",initialPage)
 
   return (
-    <Box  >
+    <Box>
+      <Navbar page={page} />
+      <MobNav/>
       <CarouselComponent />
       <Flex>
-        <FilterSortBar page={page} />
-        <ProductsList page={page}/>
+        <Box
+          display={{ base: "none", md: "block", lg: "block" }}
+          w={{ base: "100%", md: "210px", lg: "18%" }}
+      ml={{ md: "20px", lg: "30px" }}
+        >
+          <FilterSortBar page={page} />
+        </Box>
+        <ProductsList page={page} />
       </Flex>
-      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange}/>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
+      
     </Box>
   );
 };

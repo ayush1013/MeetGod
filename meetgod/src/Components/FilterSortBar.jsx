@@ -42,15 +42,15 @@ function FilterSortBar({page}) {
 
   return (
     <Box
-      display={{ base: "none", md: "block", lg: "block" }}
-      w={{ base: "0px", md: "210px", lg: "18%" }}
+      display={{ base: "block", md: "block", lg: "block" }}
+      w={{ base: "100%", md: "210px", lg: "100%" }}
       mt={{ md: "30px", lg: "40px" }}
       h="100vh"
       bgColor={"white"}
-      borderRight={"2px solid #DDDDDD"}
+      borderRight={{ base: "none", md: "2px solid #DDDDDD", lg: "2px solid #DDDDDD" }}
       boxSizing="borderBox"
       p="20px"
-      ml={{ md: "20px", lg: "30px" }}
+      // ml={{ md: "20px", lg: "30px" }}
       zIndex={5}
       position={"sticky"}
       top="65px"
