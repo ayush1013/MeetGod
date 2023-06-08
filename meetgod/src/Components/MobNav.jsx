@@ -1,33 +1,18 @@
 import {
     Box,
-    Button,
-    Drawer,
-    DrawerBody,
-    DrawerCloseButton,
-    DrawerContent,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
     Flex,
     Grid,
-    Image,
-    Input,
     Text,
     useDisclosure,
   } from "@chakra-ui/react";
-  import SearchIcon from "@material-ui/icons/Search";
   import HomeIcon from "@material-ui/icons/Home";
   import PostAddSharpIcon from "@material-ui/icons/PostAddSharp";
   import SpaIcon from "@material-ui/icons/Spa";
   import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
   import LocalMallIcon from "@material-ui/icons/LocalMall";
   import AccountBoxIcon from "@material-ui/icons/AccountBox";
-  import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
-  import SettingsRoundedIcon from "@material-ui/icons/SettingsRounded";
   import React, { useState } from "react";
   import { Link, useLocation } from "react-router-dom";
-  import FilterSortBar from "./FilterSortBar";
-  import Sections from "./Sections";
 
 const MobNav = () => {
     const location = useLocation();
@@ -46,11 +31,11 @@ const MobNav = () => {
         w={"100%"}
         ml={{ base: "auto", md: "10%", lg: "16%" }}
         cursor={"pointer"}
-        border={"1px solid red"}
+        // border={"1px solid red"}
         position={"fixed"}
         bgColor={"white"}
         zIndex={"10"}
-        top={"50px"}
+        bottom = {"0"}
       >
         <Link to="/">
           <Box onClick={() => setSection("/")} value="/" textAlign={"center"}>

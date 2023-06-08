@@ -38,7 +38,7 @@ const ProductsList = ({ page }) => {
         md: "repeat(2,1fr)",
         lg: "repeat(3,1fr)",
       }}
-      w={{ base: "95%", md: "68%", lg: "75%" }}
+      w={{ base: "100%", md: "68%", lg: "75%" }}
       // border="1px solid black"
       gap={{ base: "20px", md: "25px", lg: "30" }}
       bgColor={"white"}
