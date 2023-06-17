@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../Redux/ProductsReducer/action";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 const ProductsList = ({ page }) => {
   const data = useSelector((store) => store.productReducer.products.items);
@@ -24,7 +24,7 @@ const ProductsList = ({ page }) => {
 
   useEffect(() => {
     if (location || data.length === 0) {
-      dispatch(getData(location.search))
+      dispatch(getData(location.search));
     }
   }, [location.search]);
 
@@ -51,22 +51,26 @@ const ProductsList = ({ page }) => {
             // border="1px solid black"
             p="5px"
           >
-            <Image
-              src={elem.image}
-              h={{ base: "auto", md: "200px", lg: "200px" }}
-              m="auto"
-            />
+            <Link to={`/product/${elem._id}`}>
+              <Image
+                src={elem.image}
+                h={{ base: "auto", md: "200px", lg: "200px" }}
+                m="auto"
+              />
+            </Link>
             <Box
               mt={"5px"}
               // border={"1px solid black"}
               h={{ md: "", lg: "80px" }}
             >
+              <Link to={`/product/${elem._id}`}>
               <Text
                 fontSize={{ base: "22px", md: "18px", lg: "18px" }}
                 fontWeight={"bold"}
               >
                 {elem.title}
               </Text>
+              </Link>
               <Text
                 fontSize={{ base: "20px", md: "16px", lg: "16px" }}
                 color={"green"}

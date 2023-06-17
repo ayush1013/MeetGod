@@ -14,3 +14,16 @@ export const getData = (params)=> (dispatch)=>{
         })
 }
 
+export const getSingleData = (id) => (dispatch)=>{
+    dispatch({type: types.GET_DATA_REQUEST});
+    axios.get(`https://sleepy-clam-kimono.cyclic.app/products/${id}`)
+        .then((res)=>{
+            // console.log("data from action",res.data);
+            dispatch({type: types.GET_SINGLEDATA_SUCCESS, payload:res.data});
+        })
+        .catch((err)=>{
+            console.log(err);
+            dispatch({type: types.GET_DATA_ERROR});
+        })
+}
+

@@ -16,13 +16,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import SearchIcon from "@material-ui/icons/Search";
-import HomeIcon from "@material-ui/icons/Home";
-import PostAddSharpIcon from "@material-ui/icons/PostAddSharp";
-import SpaIcon from "@material-ui/icons/Spa";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import LocalMallIcon from "@material-ui/icons/LocalMall";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
-import SettingsRoundedIcon from "@material-ui/icons/SettingsRounded";
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import FilterSortBar from "./FilterSortBar";
@@ -38,7 +32,7 @@ const Navbar = ({ page }) => {
   const btnRef = React.useRef();
   const [isHover, setIsHover] = useState(false);
 
-  console.log(isHover && "Hello!");
+  // console.log(isHover && "Hello!");
 
   return (
     <Flex
