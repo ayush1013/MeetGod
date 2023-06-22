@@ -3,7 +3,10 @@ import Navbar from "../Components/Navbar";
 import MobNav from "../Components/MobNav";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleData } from "../Redux/ProductsReducer/action";
+import {
+  getSingleData,
+  getDataByCategory,
+} from "../Redux/ProductsReducer/action";
 import RoomIcon from "@material-ui/icons/Room";
 import {
   Box,
@@ -18,9 +21,11 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
+import ProductSlider from "../Components/ProductSlider";
 
 const SingleProduct = () => {
   const data = useSelector((store) => store.productReducer.singleProduct);
+  const products = useSelector((store) => store.productReducer.products.items);
   const dispatch = useDispatch();
   const { id } = useParams();
   // console.log("id is", id)
@@ -29,6 +34,7 @@ const SingleProduct = () => {
   const [mainImage, setMainImage] = useState(0);
 
   console.log("imageArray", imageArray);
+  console.log("product is ", products);
 
   useEffect(() => {
     dispatch(getSingleData(id));
@@ -38,7 +44,11 @@ const SingleProduct = () => {
     if ((data.image !== null, data.image_gallery !== undefined)) {
       setImageArray([data.image, ...data.image_gallery]);
     }
-  }, [data]);
+
+    if (data.category) {
+      dispatch(getDataByCategory(data.category));
+    }
+  }, [data, dispatch]);
 
   return (
     <Box pb="70px" bgColor={"white"}>
@@ -267,6 +277,17 @@ const SingleProduct = () => {
           </Button>
         </Box>
       </Flex>
+      <Box
+        pl={{ base: "10px", md: "20px", lg: "30px" }}
+        pr={{ base: "10px", md: "20px", lg: "50px" }}
+        w="100%"
+        // border={"1px solid red"}
+        mt={{ base: "20px", md: "35px", lg: "50px" }}
+      >
+        {data.category && products?.length > 0 && (
+          <ProductSlider products={products} />
+        )}
+      </Box>
     </Box>
   );
 };

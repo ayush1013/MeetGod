@@ -22,6 +22,8 @@ const ProductsList = ({ page }) => {
   const location = useLocation();
   console.log("Data is", data);
 
+  // console.log("search", location.search);
+
   useEffect(() => {
     if (location || data.length === 0) {
       dispatch(getData(location.search));

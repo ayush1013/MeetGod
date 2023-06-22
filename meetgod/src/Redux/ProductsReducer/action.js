@@ -27,3 +27,15 @@ export const getSingleData = (id) => (dispatch)=>{
         })
 }
 
+export const getDataByCategory = (category)=> (dispatch)=>{
+    dispatch({type: types.GET_DATA_REQUEST});
+    axios.get(`https://sleepy-clam-kimono.cyclic.app/products?category=${category}`)
+        .then((res)=>{
+            console.log("data from action",res.data);
+            dispatch({type: types.GET_DATA_SUCCESS, payload:res.data});
+        })
+        .catch((err)=>{
+            console.log(err);
+            dispatch({type: types.GET_DATA_ERROR});
+        })
+}
