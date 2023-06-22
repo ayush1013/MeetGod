@@ -7,12 +7,18 @@ import { Link } from "react-router-dom";
 
 const ProductSlider = ({ products }) => {
   // Settings for the Slider
+  let cards = 5;
+  if(products?.length===4){
+    cards = 4
+  }else if(products.length===3){
+    cards = 3
+  }
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToShow: cards,
+    slidesToScroll: cards,
     responsive: [
       {
         breakpoint: 1024,

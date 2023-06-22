@@ -105,7 +105,7 @@ const SingleProduct = () => {
                 w={{ base: "100%", md: "100%", lg: "100%" }}
               />
               <Text textAlign={"right"} color={"red"} fontSize={"12px"}>
-                {data.god_name}
+                {data.god_name==="N/A"?"":data.god_name}
               </Text>
             </Box>
           </Flex>
@@ -284,7 +284,7 @@ const SingleProduct = () => {
         // border={"1px solid red"}
         mt={{ base: "20px", md: "35px", lg: "50px" }}
       >
-        {data.category && products?.length > 0 && (
+        {data.category && products?.length > 1 && (
           <ProductSlider products={products} />
         )}
       </Box>
