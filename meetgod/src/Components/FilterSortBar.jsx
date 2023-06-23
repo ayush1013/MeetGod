@@ -179,8 +179,8 @@ function FilterSortBar({page}) {
           <Flex gap="5px">
             <input
               type="checkbox"
-              checked={category.includes("jewellery")}
-              value="jewellery"
+              checked={category.includes("jewelry")}
+              value="jewelry"
               onChange={handleCheckbox}
             />
             <Text>Jewellery</Text>

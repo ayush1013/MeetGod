@@ -105,7 +105,7 @@ const SingleProduct = () => {
                 w={{ base: "100%", md: "100%", lg: "100%" }}
               />
               <Text textAlign={"right"} color={"red"} fontSize={"12px"}>
-                {data.god_name==="N/A"?"":data.god_name}
+                {data.god_name === "N/A" ? "" : data.god_name}
               </Text>
             </Box>
           </Flex>
@@ -272,22 +272,24 @@ const SingleProduct = () => {
             _hover={{ opacity: 0.7 }}
             _focus={{ outline: "none" }}
             color="white"
+            isDisabled={data.outOfStock}
           >
             Buy Now
           </Button>
         </Box>
       </Flex>
-      <Box
-        pl={{ base: "10px", md: "20px", lg: "30px" }}
-        pr={{ base: "10px", md: "20px", lg: "50px" }}
-        w="100%"
-        // border={"1px solid red"}
-        mt={{ base: "20px", md: "35px", lg: "50px" }}
-      >
-        {data.category && products?.length > 1 && (
+      {data.category && products?.length > 1 && (
+        <Box
+          pl={{ base: "10px", md: "20px", lg: "30px" }}
+          pr={{ base: "10px", md: "20px", lg: "50px" }}
+          w="100%"
+          // border={"1px solid red"}
+          mt={{ base: "20px", md: "35px", lg: "50px" }}
+        >
+          <Text mb="10px">Related Products</Text>
           <ProductSlider products={products} />
-        )}
-      </Box>
+        </Box>
+      )}
     </Box>
   );
 };
