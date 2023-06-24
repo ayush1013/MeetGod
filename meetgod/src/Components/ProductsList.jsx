@@ -36,7 +36,7 @@ const ProductsList = ({ page }) => {
       mt={{ base: "20px", md: "30px", lg: "40px" }}
       ml={{ md: "30px", lg: "40px" }}
       gridTemplateColumns={{
-        base: "repeat(1,1fr)",
+        base: "repeat(2,1fr)",
         md: "repeat(2,1fr)",
         lg: "repeat(3,1fr)",
       }}
@@ -56,7 +56,7 @@ const ProductsList = ({ page }) => {
             <Link to={`/product/${elem._id}`}>
               <Image
                 src={elem.image}
-                h={{ base: "auto", md: "200px", lg: "200px" }}
+                h={{ base: "150px", md: "200px", lg: "200px" }}
                 m="auto"
               />
             </Link>
@@ -67,16 +67,18 @@ const ProductsList = ({ page }) => {
             >
               <Link to={`/product/${elem._id}`}>
               <Text
-                fontSize={{ base: "22px", md: "18px", lg: "18px" }}
-                fontWeight={"bold"}
+                fontSize={{ base: "16px", md: "18px", lg: "18px" }}
+                fontWeight={{ base: "500", md: "bold", lg: "bold" }}
+                h={{base:"23px",md:"auto",lg:"auto"}}
+                overflow={"hidden"}
               >
                 {elem.title}
               </Text>
               </Link>
               <Text
-                fontSize={{ base: "20px", md: "16px", lg: "16px" }}
+                fontSize={{ base: "14px", md: "16px", lg: "16px" }}
                 color={"green"}
-                fontWeight={"bold"}
+                fontWeight={{ base: "500", md: "bold", lg: "bold" }}
               >
                 ₹{elem.price}
               </Text>
@@ -86,12 +88,14 @@ const ProductsList = ({ page }) => {
               display={"block"}
               bgGradient="linear(to-l, #F79200, #F4C50F, #F79200)"
               w="75%"
+              h={{base:"25px", md:"40px",lg:"40px" }}
               mt="5px"
               _hover={{ opacity: 0.7 }}
               _focus={{ outline: "none" }}
-              borderRadius={"40px"}
-              borderBottomRadius={"none"}
+              borderRadius={{base:"25px",md:"40px",lg:"40px"}}
+              borderBottomRadius={{base:"none",md:"none",lg:"none"}}
               color="white"
+              fontSize={{ base: "13px", md: "16px", lg: "18px" }}
             >
               Add to Cart
             </Button>

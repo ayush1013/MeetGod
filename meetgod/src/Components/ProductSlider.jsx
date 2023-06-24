@@ -10,7 +10,7 @@ const ProductSlider = ({ products }) => {
   let cards = 5;
   if(products?.length===4){
     cards = 4
-  }else if(products.length===3){
+  }else if(products?.length===3){
     cards = 3
   }
   const settings = {
@@ -30,6 +30,7 @@ const ProductSlider = ({ products }) => {
       {
         breakpoint: 768,
         settings: {
+          dots: false,
           slidesToShow: 2,
           slidesToScroll: 1,
         },
