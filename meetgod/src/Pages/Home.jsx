@@ -49,7 +49,7 @@ const Home = () => {
             <Flex
               // border="1px solid black"
               alignItems={"center"}
-              w="95%"
+              w="100%"
               m="auto"
               mt="40px"
               h="80px"
@@ -58,6 +58,8 @@ const Home = () => {
               gap="20px"
               pl="10px"
               pr="10px"
+              border={"1px solid #EBEBEB"}
+              borderBottom={"2px solid #EBEBEB"}
             >
               <Image
                 src="https://scontent.fbho4-4.fna.fbcdn.net/v/t39.30808-6/347823893_940297803683423_4736240409875839683_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=xdIx_8veQVAAX9oNdVm&_nc_ht=scontent.fbho4-4.fna&oh=00_AfA2oy_fu7wyrwqQWlX0YiG4UOiz93ab62wYBCjOndYw1Q&oe=649C2762"
@@ -73,7 +75,7 @@ const Home = () => {
               <AddPhotoAlternateIcon
                 fontSize="large"
                 onClick={handleFileClick}
-                style={{ color: "#8F88D6" }}
+                style={{ color: "#8F88D6", cursor:"pointer" }}
               />
               <Input
                 type="file"
@@ -189,7 +191,11 @@ const Home = () => {
                           borderRadius: "50%",
                         }}
                       />
-                      <Text fontSize={"14px"} color={doComment ? "#4F83B6" : "black"} fontWeight={"500"}>
+                      <Text
+                        fontSize={"14px"}
+                        color={doComment ? "#4F83B6" : "black"}
+                        fontWeight={"500"}
+                      >
                         Comment
                       </Text>
                     </Flex>
