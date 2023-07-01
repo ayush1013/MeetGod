@@ -5,6 +5,7 @@ import { Box, Flex, Grid, Image, Input, Text } from "@chakra-ui/react";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import CommentIcon from "@material-ui/icons/Comment";
+import SendIcon from "@material-ui/icons/Send";
 import { postData } from "../LocalData/Posts";
 
 const Home = () => {
@@ -75,7 +76,7 @@ const Home = () => {
               <AddPhotoAlternateIcon
                 fontSize="large"
                 onClick={handleFileClick}
-                style={{ color: "#8F88D6", cursor:"pointer" }}
+                style={{ color: "#8F88D6", cursor: "pointer" }}
               />
               <Input
                 type="file"
@@ -199,6 +200,38 @@ const Home = () => {
                         Comment
                       </Text>
                     </Flex>
+                  </Flex>
+
+                  <Flex
+                    alignItems={"center"}
+                    w="100%"
+                    m="auto"
+                    gap="10px"
+                    p="10px 10px"
+                    borderTop={"1px solid #EBEBEB"}
+                  >
+                    <Image
+                      src="https://scontent.fbho4-4.fna.fbcdn.net/v/t39.30808-6/347823893_940297803683423_4736240409875839683_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=xdIx_8veQVAAX9oNdVm&_nc_ht=scontent.fbho4-4.fna&oh=00_AfA2oy_fu7wyrwqQWlX0YiG4UOiz93ab62wYBCjOndYw1Q&oe=649C2762"
+                      w="40px"
+                      borderRadius={"50%"}
+                    />
+                    <Flex
+                      alignItems={"center"}
+                      justifyContent={"space-between"}
+                      bgColor="#F3F2EF"
+                      borderRadius={"5px"}
+                      w="90%"
+                      pr="10px"
+                    >
+                      <Input
+                        placeholder="Write a comment"
+                        bgColor="#F3F2EF"
+                        border="none"
+                        mr="10px"
+                      />
+                      <SendIcon style={{}} />
+                    </Flex>
+                    
                   </Flex>
                 </Box>
               );
