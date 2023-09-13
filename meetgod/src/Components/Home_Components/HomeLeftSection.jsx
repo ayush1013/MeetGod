@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Box, Button, Flex, Grid, Image, Input, Text } from "@chakra-ui/react";
-import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import { Link } from "react-router-dom";
 import { godsArray } from "../../LocalData/Posts";
 

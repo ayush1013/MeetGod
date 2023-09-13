@@ -7,6 +7,7 @@ import { godsArray, postData, products } from "../LocalData/Posts";
 import PostsList from "../Components/Home_Components/PostsList";
 import { Link } from "react-router-dom";
 import HomeLeftSection from "../Components/Home_Components/HomeLeftSection";
+import HomeMiddleSection from "../Components/Home_Components/HomeMiddleSection";
 
 const Home = () => {
   const fileRef = useRef("");
@@ -43,8 +44,9 @@ const Home = () => {
 
         <HomeLeftSection/>
         {/* Home Middle Section */}
+        <HomeMiddleSection/>
 
-        <Box w={{ base: "100%", md: "60%", lg: "40%" }}>
+        {/* <Box w={{ base: "100%", md: "60%", lg: "40%" }}>
           <Box>
             <Flex
               // border="1px solid black"
@@ -101,7 +103,7 @@ const Home = () => {
               );
             })}
           </Grid>
-        </Box>
+        </Box> */}
 
         {/* Home Right Section */}
 
