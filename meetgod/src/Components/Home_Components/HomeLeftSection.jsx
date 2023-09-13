@@ -4,22 +4,7 @@ import { Link } from "react-router-dom";
 import { godsArray } from "../../LocalData/Posts";
 
 const HomeLeftSection = () => {
-  const fileRef = useRef("");
-  const [doLike, setDoLike] = useState(false);
-  const [doComment, setDoComment] = useState(false);
   const [show, setShow] = useState(false);
-
-  const handleLike = () => {
-    setDoLike(!doLike);
-  };
-
-  const handleComment = () => {
-    setDoComment(!doComment);
-  };
-
-  const handleFileClick = () => {
-    fileRef.current.click();
-  };
 
   const handleShowAndHide = () => {
     setShow(!show);
