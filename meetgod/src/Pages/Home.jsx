@@ -11,6 +11,7 @@ const Home = () => {
   const fileRef = useRef("");
   const [doLike, setDoLike] = useState(false);
   const [doComment, setDoComment] = useState(false);
+  const [show, setShow] = useState(false);
 
   const handleLike = () => {
     setDoLike(!doLike);
@@ -24,19 +25,30 @@ const Home = () => {
     fileRef.current.click();
   };
 
+  const handleShowAndHide = () => {
+    setShow(!show);
+  };
+
   return (
     <div>
       <Navbar />
       <MobNav />
-      <Flex w="100%" justifyContent={"space-between"}>
+      <Flex
+        w="100%"
+        flexDirection={{ base: "column", md: "row", lg: "row" }}
+        justifyContent={"space-around"}
+      >
         {/* Home Left Section */}
 
-        <Box w="25%">
+        <Box
+          w={{ base: "100%", md: "35%", lg: "25%" }}
+          display={{ base: "block", md: "block", lg: "block" }}
+        >
           <Box
-            w="80%"
+            w={{ base: "100%", md: "80%", lg: "80%" }}
             p="20px"
             m="auto"
-            mt="40px"
+            mt={{ base: "5px", md: "40px", lg: "40px" }}
             textAlign={"center"}
             bgColor="white"
             border={"1px solid #EBEBEB"}
@@ -57,10 +69,25 @@ const Home = () => {
             </Text>
           </Box>
           <Box
-            w="80%"
+            display={{ base: !show ? "block" : "none", md: "none", lg: "none" }}
+            w={{ base: "100%", md: "80%", lg: "80%" }}
+            p="5px"
+            m="auto"
+            mt={{ base: "5px", md: "10px", lg: "10px" }}
+            textAlign={"center"}
+            bgColor="white"
+            border={"1px solid #EBEBEB"}
+            borderBottom={"2px solid #EBEBEB"}
+            // borderRadius="10px"
+          >
+            <Text onClick={handleShowAndHide}>Show More</Text>
+          </Box>
+          <Box
+            display={{ bas: show ? "block" : "none", md: "block", lg: "block" }}
+            w={{ base: "100%", md: "80%", lg: "80%" }}
             p="20px"
             m="auto"
-            mt="10px"
+            mt={{ base: "5px", md: "10px", lg: "10px" }}
             textAlign={"center"}
             bgColor="white"
             border={"1px solid #EBEBEB"}
@@ -98,23 +125,36 @@ const Home = () => {
                   </Flex>
                 ))}
             </Grid>
-            <Link to="/products">
-              <Text textAlign={"right"} pl="32px" fontSize="13px" color={"#1A0DAB"} mt="10px">
+            <Link to="/spiritual">
+              <Text
+                textAlign={"right"}
+                pl="32px"
+                fontSize="13px"
+                color={"#1A0DAB"}
+                mt="10px"
+              >
                 Explore more →
               </Text>
             </Link>
           </Box>
+          <Text
+            display={{ base: show ? "block" : "none", md: "none", lg: "none" }}
+            textAlign={"center"}
+            onClick={handleShowAndHide}
+          >
+            Show Less
+          </Text>
         </Box>
         {/* Home Middle Section */}
 
-        <Box w="40%">
+        <Box w={{ base: "100%", md: "60%", lg: "40%" }}>
           <Box>
             <Flex
               // border="1px solid black"
               alignItems={"center"}
               w="100%"
               m="auto"
-              mt="40px"
+              mt={{ base: "5px", md: "40px", lg: "40px" }}
               h="80px"
               borderRadius={"10px"}
               bgColor="white"
@@ -133,6 +173,7 @@ const Home = () => {
                 placeholder="Share your thoughts"
                 bgColor="#F3F2EF"
                 border="none"
+                focusBorderColor="none"
               />
 
               <AddPhotoAlternateIcon
@@ -150,7 +191,7 @@ const Home = () => {
               ></Input>
             </Flex>
           </Box>
-          <Grid mt="30px" rowGap={"10px"}>
+          <Grid mt={{ base: "5px", md: "30px", lg: "30px" }} rowGap={"10px"}>
             {postData.map((elem) => {
               return (
                 <PostsList
@@ -168,6 +209,7 @@ const Home = () => {
         {/* Home Right Section */}
 
         <Box
+          display={{ base: "none", md: "none", lg: "block" }}
           w="25%"
           // border="1px solid red"
           h="90vh"
@@ -183,18 +225,25 @@ const Home = () => {
             },
           }}
         >
-          <Box textAlign="center">
-            <Text fontSize="2xl" fontWeight="500" color="blue.500">
-              Sacred Savings Await:
+          <Box
+            textAlign="center"
+            bgColor={"white"}
+            w={{ base: "100%", md: "68%", lg: "80%" }}
+            m="auto"
+            p="15px"
+            borderRadius={"10px"}
+          >
+            <Text fontSize="18px" fontWeight="500">
+              Sacred Savings Await
             </Text>
-            <Text fontSize="xl" fontWeight="500" color="green.500">
+            <Text fontWeight="500" color="#666666">
               Shop Now for the Best Deals!
             </Text>
           </Box>
           {/* <Text>Sacred Savings Await: Shop Now for the Best Deals</Text> */}
           <Grid
             m="auto"
-            mt={{ base: "20px", md: "30px", lg: "20px" }}
+            mt={{ base: "10px", md: "10px", lg: "10px" }}
             gridTemplateColumns={{
               base: "repeat(2,1fr)",
               md: "repeat(2,1fr)",

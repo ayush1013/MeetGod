@@ -48,11 +48,13 @@ const Navbar = ({ page }) => {
       top="0"
     >
       <Flex w={{ base: "90%", md: "auto", lg: "auto" }}>
+        <Link to="/" >
         <Image
           src="meetgod-logo.png"
           w={{ base: "48px", md: "62px", lg: "62px" }}
           borderRadius={"15%"}
         />
+        </Link>
         <Flex
           alignItems={"center"}
           pl={{ base: "8px", md: "20px", lg: "30px" }}

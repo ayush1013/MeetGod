@@ -16,28 +16,6 @@ export const godsArray = [
 
 export const products = [
   {
-    _id: "6464d9e6921c62d6bebb42bf",
-    title: "Radha Krishna Artwork",
-    description: "Exquisite Radha Krishna artwork painted by skilled artists.",
-    image: "https://m.media-amazon.com/images/I/81XbeR4Pg-L._SX450_.jpg",
-    image_gallery: [
-      "https://m.media-amazon.com/images/I/81+b3d4GJHL._SX450_.jpg",
-      "https://m.media-amazon.com/images/I/51Ld1z0ULLL._SX450_.jpg",
-      "https://m.media-amazon.com/images/I/611sPRItgOL._SX450_.jpg",
-    ],
-    price: 1999.99,
-    discount: 15,
-    brand: "Artistic Expressions",
-    category: "artwork",
-    outOfStock: false,
-    color: "Multicolor",
-    size: "Large",
-    height: "24",
-    length: 18,
-    god_name: "Ganesh",
-    width: "2",
-  },
-  {
     _id: "6464d9e6921c62d6bebb42be",
     title: "Ganesha Statue",
     description: "Beautiful Ganesha statue made of high-quality material.",
@@ -81,6 +59,28 @@ export const products = [
     god_name: "Lord Hanuman",
     width: null,
   },
+  {
+    _id: "6464d9e6921c62d6bebb42bf",
+    title: "Radha Krishna Artwork",
+    description: "Exquisite Radha Krishna artwork painted by skilled artists.",
+    image: "https://m.media-amazon.com/images/I/81XbeR4Pg-L._SX450_.jpg",
+    image_gallery: [
+      "https://m.media-amazon.com/images/I/81+b3d4GJHL._SX450_.jpg",
+      "https://m.media-amazon.com/images/I/51Ld1z0ULLL._SX450_.jpg",
+      "https://m.media-amazon.com/images/I/611sPRItgOL._SX450_.jpg",
+    ],
+    price: 1999.99,
+    discount: 15,
+    brand: "Artistic Expressions",
+    category: "artwork",
+    outOfStock: false,
+    color: "Multicolor",
+    size: "Large",
+    height: "24",
+    length: 18,
+    god_name: "Ganesh",
+    width: "2",
+  }
 ];
 
 export const postData = [
