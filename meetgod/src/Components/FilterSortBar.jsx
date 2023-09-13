@@ -2,43 +2,48 @@ import { Box, Flex, Text, Grid } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-function FilterSortBar({page}) {
+function FilterSortBar({ page }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const initialCategory = searchParams.getAll("category");
   const initialSort = searchParams.get("sort");
   const initialOrder = searchParams.get("order");
 
-  const [category, setCategory] = useState( initialCategory || []);
-  const [sort, setSort] = useState(initialSort || "");
+  const [category, setCategory] = useState(initialCategory || []);
+  const [sort, setSort] = useState(initialSort || []);
   const [order, setOrder] = useState(initialOrder || "");
-  
-  const handleCheckbox = (e)=>{
+
+  const handleCheckbox = (e) => {
     const newCategory = [...category];
-    if(newCategory.includes(e.target.value)){
+    if (newCategory.includes(e.target.value)) {
       newCategory.splice(newCategory.indexOf(e.target.value), 1);
-    }else{
+    } else {
       newCategory.push(e.target.value);
     }
     setCategory(newCategory);
-  }
+  };
 
-  // console.log(category);
+  // console.log(category); 
 
-  const handleSort = (e)=>{
+  const handleSort = (e) => {
+    if(e.target.name === "sortT"){
+      setSort("title")
+    }else{
+      setSort("price")
+    }
     setOrder(e.target.value);
-  }
+  };
 
   // console.log("searchParams",initialSort);
 
-  useEffect(()=>{
+  useEffect(() => {
     let params = {};
-    params.category = category
-    order && (params.sort = "price");
-    order && (params.order = order)
+    params.category = category;
+    sort && (params.sort = sort);
+    order && (params.order = order);
     params.page = page;
     setSearchParams(params);
-  },[order,category,page]);
+  }, [order, category, page]);
 
   return (
     <Box
@@ -47,7 +52,11 @@ function FilterSortBar({page}) {
       mt={{ md: "30px", lg: "40px" }}
       h="100vh"
       bgColor={"white"}
-      borderRight={{ base: "none", md: "2px solid #DDDDDD", lg: "2px solid #DDDDDD" }}
+      borderRight={{
+        base: "none",
+        md: "2px solid #DDDDDD",
+        lg: "2px solid #DDDDDD",
+      }}
       boxSizing="borderBox"
       p="20px"
       // ml={{ md: "20px", lg: "30px" }}
@@ -73,9 +82,9 @@ function FilterSortBar({page}) {
           onChange={handleSort}
         >
           <Flex gap="5px">
-            <input 
-              type="radio" 
-              name="sortp" 
+            <input
+              type="radio"
+              name="sortp"
               value="asc"
               defaultChecked={order === "asc"}
             />
@@ -91,13 +100,23 @@ function FilterSortBar({page}) {
             <Text> Price - High to Low </Text>
           </Flex>
         </Grid>
-        <Grid columnGap={"5px"} rowGap={"5px"} mt="5px">
+        <Grid columnGap={"5px"} rowGap={"5px"} mt="5px" onChange={handleSort}>
           <Flex gap="5px">
-            <input type="radio" name="sortA" />
+            <input
+              type="radio"
+              name="sortT"
+              value="asc"
+              defaultChecked={order === "asc"}
+            />
             <Text> Title - A to Z </Text>
           </Flex>
           <Flex gap="5px">
-            <input type="radio" name="sortA" />
+            <input
+              type="radio"
+              name="sortT"
+              value="desc"
+              defaultChecked={order === "desc"}
+            />
             <Text> Title - Z to A </Text>
           </Flex>
         </Grid>

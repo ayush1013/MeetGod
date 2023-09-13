@@ -36,7 +36,7 @@ const Navbar = ({ page }) => {
 
   return (
     <Flex
-      h={{ base: "50px", md: "65px", lg: "65" }}
+      h={{ base: "50px", md: "65px", lg: "65px" }}
       w="100%"
       alignItems={"center"}
       pl={["0px", "10px", "20px", "80px"]}
