@@ -55,6 +55,10 @@ const ProductsList = ({ page }) => {
           >
             <Link to={`/product/${elem._id}`}>
               <Image
+            filter="auto"
+              transition= "filter 0.5"
+              _hover={{ filter: "brightness(0.7)" }}
+              // _hover={{brightness:"40%"}}
                 src={elem.image}
                 h={{ base: "150px", md: "200px", lg: "200px" }}
                 m="auto"
@@ -66,14 +70,14 @@ const ProductsList = ({ page }) => {
               h={{ md: "", lg: "80px" }}
             >
               <Link to={`/product/${elem._id}`}>
-              <Text
-                fontSize={{ base: "16px", md: "18px", lg: "18px" }}
-                fontWeight={{ base: "500", md: "bold", lg: "bold" }}
-                h={{base:"23px",md:"auto",lg:"auto"}}
-                overflow={"hidden"}
-              >
-                {elem.title}
-              </Text>
+                <Text
+                  fontSize={{ base: "16px", md: "18px", lg: "18px" }}
+                  fontWeight={{ base: "500", md: "bold", lg: "bold" }}
+                  h={{ base: "23px", md: "auto", lg: "auto" }}
+                  overflow={"hidden"}
+                >
+                  {elem.title}
+                </Text>
               </Link>
               <Text
                 fontSize={{ base: "14px", md: "16px", lg: "16px" }}
@@ -88,12 +92,12 @@ const ProductsList = ({ page }) => {
               display={"block"}
               bgGradient="linear(to-l, #F79200, #F4C50F, #F79200)"
               w="75%"
-              h={{base:"25px", md:"40px",lg:"40px" }}
+              h={{ base: "25px", md: "40px", lg: "40px" }}
               mt="5px"
               _hover={{ opacity: 0.7 }}
               _focus={{ outline: "none" }}
-              borderRadius={{base:"25px",md:"40px",lg:"40px"}}
-              borderBottomRadius={{base:"none",md:"none",lg:"none"}}
+              borderRadius={{ base: "25px", md: "40px", lg: "40px" }}
+              borderBottomRadius={{ base: "none", md: "none", lg: "none" }}
               color="white"
               fontSize={{ base: "13px", md: "16px", lg: "18px" }}
             >

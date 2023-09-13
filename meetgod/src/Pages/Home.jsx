@@ -16,13 +16,8 @@ const Home = () => {
         flexDirection={{ base: "column", md: "row", lg: "row" }}
         justifyContent={"space-around"}
       >
-        {/* Home Left Section */}
         <HomeLeftSection />
-
-        {/* Home Middle Section */}
         <HomeMiddleSection />
-
-        {/* Home Right Section */}
         <HomeRightSection />
       </Flex>
     </div>

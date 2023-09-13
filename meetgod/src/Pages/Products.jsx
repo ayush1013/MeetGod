@@ -39,13 +39,13 @@ const Products = () => {
   return (
     <Box>
       <Navbar page={page} />
-      <MobNav/>
+      <MobNav />
       <CarouselComponent />
       <Flex>
         <Box
           display={{ base: "none", md: "block", lg: "block" }}
           w={{ base: "100%", md: "210px", lg: "18%" }}
-      ml={{ md: "20px", lg: "30px" }}
+          ml={{ md: "20px", lg: "30px" }}
         >
           <FilterSortBar page={page} />
         </Box>
@@ -56,7 +56,6 @@ const Products = () => {
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
-      
     </Box>
   );
 };
