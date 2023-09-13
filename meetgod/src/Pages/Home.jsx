@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 import MobNav from "../Components/MobNav";
 import { Box, Button, Flex, Grid, Image, Input, Text } from "@chakra-ui/react";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
-import { postData, products } from "../LocalData/Posts";
+import { godsArray, postData, products } from "../LocalData/Posts";
 import PostsList from "../Components/Home_Components/PostsList";
 import { Link } from "react-router-dom";
 
@@ -31,7 +31,7 @@ const Home = () => {
       <Flex w="100%" justifyContent={"space-between"}>
         {/* Home Left Section */}
 
-        <Box w="25%" border="1px solid red">
+        <Box w="25%">
           <Box
             w="80%"
             p="20px"
@@ -67,7 +67,42 @@ const Home = () => {
             borderBottom={"2px solid #EBEBEB"}
             borderRadius="10px"
           >
-
+            {/* <Image
+              src="meetgod-logo2.png"
+              w={{ base: "100%", md: "100%", lg: "100%" }}
+              borderRadius={"10px"}
+              mb="10px"
+            /> */}
+            <Text fontSize="14px" textAlign={"center"} fontWeight="500">
+              Connect on a Deeper Level:
+            </Text>
+            <Text textAlign={"center"} fontSize={"13px"} color="#666666">
+              Learn More about Your Favorite God
+            </Text>
+            <Grid mt="10px" gap="10px">
+              {godsArray.length > 0 &&
+                godsArray?.map((elem) => (
+                  <Flex
+                    textAlign={"left"}
+                    w="fit-content"
+                    fontSize="13px"
+                    cursor="pointer"
+                    _hover={{ color: "#1A0DAB" }}
+                  >
+                    <Text fontWeight={"500"}>
+                      {elem.name}:{" "}
+                      <span style={{ fontWeight: "normal", fontSize: "13px" }}>
+                        {elem.specialty}
+                      </span>
+                    </Text>
+                  </Flex>
+                ))}
+            </Grid>
+            <Link to="/products">
+              <Text textAlign={"right"} pl="32px" fontSize="13px" color={"#1A0DAB"} mt="10px">
+                Explore more →
+              </Text>
+            </Link>
           </Box>
         </Box>
         {/* Home Middle Section */}

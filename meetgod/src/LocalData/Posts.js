@@ -1,3 +1,19 @@
+export const godsArray = [
+  // { name: "Lord Vishnu", specialty: "The Preserver of the Cosmos" },
+  // { name: "Lord Brahma", specialty: "The Creator of the Universe" },
+  { name: "Lord Shiva", specialty: "The Destroyer and Transformer of Existence" },
+  { name: "Goddess Durga", specialty: "The Invincible Divine Mother" },
+  // { name: "Lord Krishna", specialty: "The Divine Melodist and Universal Teacher" },
+  { name: "Lord Rama", specialty: "The Embodiment of Virtue and Righteousness" },
+  // { name: "Lord Ganesha", specialty: "Remover of Obstacles and Patron of Beginnings" },
+  { name: "Lord Hanuman", specialty: "The Mighty Monkey God and Devotee of Lord Rama" },
+  // { name: "Goddess Lakshmi", specialty: "Bestower of Prosperity and Fortune" },
+  // { name: "Goddess Saraswati", specialty: "The Source of Knowledge and Artistic Inspiration" },
+  // { name: "Goddess Parvati", specialty: "The Divine Consort of Lord Shiva and Mother of the Universe" },
+  // { name: "Goddess Kali", specialty: "The Fierce and Compassionate Mother Goddess" },
+];
+
+
 export const products = [
   {
     _id: "6464d9e6921c62d6bebb42bf",
