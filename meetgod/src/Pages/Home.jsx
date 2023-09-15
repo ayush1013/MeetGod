@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
-import Navbar from "../Components/Navbar";
-import MobNav from "../Components/MobNav";
+import Navbar from "../Components/Navbar_Components/Navbar";
+import MobNav from "../Components/Navbar_Components/MobNav";
 import { Flex } from "@chakra-ui/react";
 import HomeLeftSection from "../Components/Home_Components/HomeLeftSection";
 import HomeMiddleSection from "../Components/Home_Components/HomeMiddleSection";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
-import MobNav from "../Components/MobNav";
+import Navbar from "../Components/Navbar_Components/Navbar";
+import MobNav from "../Components/Navbar_Components/MobNav";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {

@@ -18,8 +18,8 @@ import FilterSortBar from "../Components/FilterSortBar";
 import Pagination from "../Components/Pagination";
 import ProductsList from "../Components/ProductsList";
 import { useSearchParams } from "react-router-dom";
-import Navbar from "../Components/Navbar";
-import MobNav from "../Components/MobNav";
+import Navbar from "../Components/Navbar_Components/Navbar";
+import MobNav from "../Components/Navbar_Components/MobNav";
 
 const Products = () => {
   const { currentPage, totalPages } = useSelector(
