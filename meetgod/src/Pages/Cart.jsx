@@ -6,6 +6,12 @@ import CartProducts from "../Components/Cart_Components/CartProducts";
 import { products } from "../LocalData/Posts";
 
 const Cart = () => {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleQuantity = (num) => {
+    setQuantity((prev) => prev + num);
+  };
+
   return (
     <div>
       <Navbar />
@@ -18,7 +24,6 @@ const Cart = () => {
         mt={{ base: "10px", md: "20px", lg: "20px" }}
         fontSize={"14px"}
       >
-
         <Grid
           w={{ base: "100%", md: "65%", lg: "50%" }}
           gap="10px"
@@ -27,7 +32,13 @@ const Cart = () => {
         >
           {products.length > 0 &&
             products?.map((elem) => {
-              return <CartProducts elem={elem} />
+              return (
+                <CartProducts
+                  quantity={quantity}
+                  handleQuantity={handleQuantity}
+                  elem={elem}
+                />
+              );
             })}
         </Grid>
 
@@ -35,8 +46,11 @@ const Cart = () => {
           // border="1px solid black"
           w={{ base: "100%", md: "28%", lg: "25%" }}
           bgColor="white"
+          p="10px"
         >
-          <Text>Price Details </Text>
+          <Text fontSize="20px">
+            Price Details ( {products.length > 0 && products.length} Items )
+          </Text>
         </Box>
       </Flex>
     </div>

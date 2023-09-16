@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import { Box, Flex, Grid, Image, Text, Button } from "@chakra-ui/react";
-import { products } from "../../LocalData/Posts";
 
-const CartProducts = ({ elem }) => {
-  const [quantity, setQuantity] = useState(1);
-
-  const handleQuantity = (num) => {
-    setQuantity((prev) => prev + num);
-  };
+const CartProducts = ({ elem, handleQuantity,quantity }) => {
 
   return (
     <Flex
