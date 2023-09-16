@@ -22,13 +22,13 @@ const Cart = () => {
               return (
                 <Flex
                   bgColor="white"
-                  p="5px"
+                  p="10px"
                   key={elem._id}
                   border={"1px solid #EBEBEB"}
-                  borderRadius="10px"
+                  borderRadius="5px"
                   gap="10px"
                 >
-                  <Image src={elem.image} w={{ base: "", md: "", lg: "26%" }} />
+                  <Image src={elem.image} w={{ base: "", md: "", lg: "28%" }} />
                   <Grid justifyContent={"space-between"}>
                     <Box>
                       <Text color="#666666">Product by {elem.brand}</Text>
