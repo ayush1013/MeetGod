@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Components/Navbar_Components/Navbar";
 import MobNav from "../Components/Navbar_Components/MobNav";
-import { Box, Flex, Grid, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, Image, Text, Button } from "@chakra-ui/react";
 import { products } from "../LocalData/Posts";
 
 const Cart = () => {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleQuantity = (num) => {
+    setQuantity((prev) => prev + num);
+  };
+
   return (
     <div>
       <Navbar />
       <MobNav />
-      <Flex w="100%" justifyContent={"center"} gap="30px" mt="20px">
+      <Flex w="100%" justifyContent={"center"} gap="30px" mt="20px" fontSize={"14px"} >
         <Grid w="50%" gap="10px" bgColor={"white"} p="10px">
           {products.length > 0 &&
             products?.map((elem) => {
@@ -23,18 +29,39 @@ const Cart = () => {
                   gap="10px"
                 >
                   <Image src={elem.image} w={{ base: "", md: "", lg: "26%" }} />
-                  <Box>
+                  <Grid justifyContent={"space-between"}>
                     <Box>
-                      <Text>Product by {elem.brand}</Text>
-                      <Text>{elem.title}</Text>
+                      <Text color="#666666">Product by {elem.brand}</Text>
+                      <Text fontWeight={"500"}>{elem.title}</Text>
                     </Box>
-                    <Flex></Flex>
                     <Flex textAlign={"center"} gap="5px">
                       {elem.discount !== 0 && (
                         <Text color="green">-{elem.discount}%</Text>
                       )}
-                      <Text>₹{Math.floor(elem.price)}</Text>
+                      <Text fontWeight={"500"}>₹{Math.floor(elem.price)}</Text>
                     </Flex>
+
+                    <Box>
+                      <Text>Qty</Text>
+                      <Flex gap="2px">
+                        <Button
+                          size="xs"
+                          onClick={() => handleQuantity(-1)}
+                          isDisabled={quantity == 1}
+                        >
+                          -
+                        </Button>
+                        <Button size="xs">{quantity}</Button>
+                        <Button
+                          size="xs"
+                          onClick={() => handleQuantity(1)}
+                          isDisabled={quantity === 10}
+                        >
+                          +
+                        </Button>
+                      </Flex>
+                    </Box>
+
                     {elem.discount !== 0 && (
                       <Text color="green">
                         You are saving ₹
@@ -42,7 +69,11 @@ const Cart = () => {
                         {elem.category}
                       </Text>
                     )}
-                  </Box>
+                    <Flex gap="2px">
+                      <Button size="xs" >Move to Wishlist</Button>
+                      <Button size="xs" >Remove</Button>
+                    </Flex>
+                  </Grid>
                 </Flex>
               );
             })}
