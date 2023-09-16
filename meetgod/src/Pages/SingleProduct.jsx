@@ -147,7 +147,7 @@ const SingleProduct = () => {
               )}
               <Text fontSize={{ base: "20px", md: "23px", lg: "28px" }}>
                 ₹{Math.floor(data.price)}
-              </Text>
+              </Text><div className=""></div>
             </Flex>
             {data.discount !== 0 && (
               <Text
