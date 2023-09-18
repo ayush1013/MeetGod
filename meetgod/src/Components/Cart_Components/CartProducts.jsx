@@ -13,7 +13,7 @@ const CartProducts = ({ elem, handleQuantity,quantity }) => {
       gap="10px"
       h="fit-content"
     >
-      <Box w={{ base: "30%", md: "28%", lg: "28%" }}>
+      <Box w={{ base: "30%", md: "25%", lg: "28%" }}>
         <Image src={elem.image} w={{ base: "100%", md: "100%", lg: "100%" }} />
       </Box>
       <Grid justifyContent={"space-between"}>
