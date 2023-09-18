@@ -43,8 +43,10 @@ const Cart = () => {
               );
             })}
         </Grid>
-        
+
+        {/* Price Details */}
         <PriceDetails />
+        
       </Flex>
     </Box>
   );
