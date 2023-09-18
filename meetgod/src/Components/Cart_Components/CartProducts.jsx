@@ -11,6 +11,7 @@ const CartProducts = ({ elem, handleQuantity,quantity }) => {
       border={"1px solid #EBEBEB"}
       borderRadius="5px"
       gap="10px"
+      h="fit-content"
     >
       <Box w={{ base: "30%", md: "28%", lg: "28%" }}>
         <Image src={elem.image} w={{ base: "100%", md: "100%", lg: "100%" }} />
@@ -43,7 +44,7 @@ const CartProducts = ({ elem, handleQuantity,quantity }) => {
 
         <Box>
           <Text>Qty</Text>
-          <Flex gap="2px">
+          <Flex gap="2px"  >
             <Button
               size="xs"
               onClick={() => handleQuantity(-1)}
@@ -69,8 +70,8 @@ const CartProducts = ({ elem, handleQuantity,quantity }) => {
           </Text>
         )}
         <Flex gap="2px">
-          <Button size="xs">Move to Wishlist</Button>
-          <Button size="xs">Remove</Button>
+          <Button size="xs" variant="outline" colorScheme="blue">Move to Wishlist</Button>
+          <Button size="xs" variant="outline" colorScheme="red"  >Remove</Button>
         </Flex>
       </Grid>
     </Flex>

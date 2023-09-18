@@ -29,6 +29,7 @@ const Cart = () => {
           gap="10px"
           bgColor={"white"}
           p="10px"
+          h="fit-content"
         >
           {products.length > 0 &&
             products?.map((elem) => {
@@ -48,9 +49,22 @@ const Cart = () => {
           bgColor="white"
           p="10px"
         >
-          <Text fontSize="20px">
-            Price Details ( {products.length > 0 && products.length} Items )
+          <Text fontSize="16px">
+            Price Details 
+            <span style={{paddingLeft:"5px", color:"tomato"}} >
+            ({products.length > 0 && products.length} Items)
+            </span>
           </Text>
+          <Grid gridTemplateColumns={"repeat(2, 1fr)"} justifyContent={"space-between"} >
+            <Text >Totla MRP</Text>
+            <Text textAlign={"right"} >500</Text>
+            <Text>Discount on MRP</Text>
+            <Text textAlign={"right"}>-50</Text>
+            <Text > Coupon Discount</Text>
+            <Text textAlign={"right"}> Apply Coupon </Text>
+            <Text> Convenience Fee </Text>
+            <Text textAlign={"right"}>100</Text>
+          </Grid>
         </Box>
       </Flex>
     </div>

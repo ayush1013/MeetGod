@@ -51,14 +51,15 @@ const ProductsList = ({ page }) => {
           <Box
             key={elem._id}
             // border="1px solid black"
+            border={"1px solid #EBEBEB"}
             p="5px"
           >
             <Link to={`/product/${elem._id}`}>
               <Image
-            filter="auto"
-              transition= "filter 0.5"
-              _hover={{ filter: "brightness(0.7)" }}
-              // _hover={{brightness:"40%"}}
+                filter="auto"
+                transition="filter 0.5"
+                _hover={{ filter: "brightness(0.7)" }}
+                // _hover={{brightness:"40%"}}
                 src={elem.image}
                 h={{ base: "150px", md: "200px", lg: "200px" }}
                 m="auto"
@@ -93,7 +94,6 @@ const ProductsList = ({ page }) => {
               bgGradient="linear(to-l, #F79200, #F4C50F, #F79200)"
               w="75%"
               h={{ base: "25px", md: "40px", lg: "40px" }}
-              mt="5px"
               _hover={{ opacity: 0.7 }}
               _focus={{ outline: "none" }}
               borderRadius={{ base: "25px", md: "40px", lg: "40px" }}
