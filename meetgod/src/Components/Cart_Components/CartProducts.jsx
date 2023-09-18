@@ -69,7 +69,7 @@ const CartProducts = ({ elem, handleQuantity,quantity }) => {
             this {elem.category}
           </Text>
         )}
-        <Flex gap="2px">
+        <Flex gap="5px">
           <Button size="xs" variant="outline" colorScheme="purple">Move to Wishlist</Button>
           <Button size="xs" variant="outline" colorScheme="red"  >Remove</Button>
         </Flex>
