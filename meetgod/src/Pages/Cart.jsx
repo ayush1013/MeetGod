@@ -48,23 +48,45 @@ const Cart = () => {
           w={{ base: "100%", md: "28%", lg: "25%" }}
           bgColor="white"
           p="10px"
+          border="1px solid #EBEBEB"
         >
-          <Text fontSize="16px">
-            Price Details 
-            <span style={{paddingLeft:"5px", color:"tomato"}} >
-            ({products.length > 0 && products.length} Items)
+          <Text fontSize="16px" fontWeight="500" color="#666666" >
+            Price Details
+            <span style={{ paddingLeft: "5px", color: "tomato" }}>
+              ({products.length > 0 && products.length} Items)
             </span>
           </Text>
-          <Grid gridTemplateColumns={"repeat(2, 1fr)"} justifyContent={"space-between"} >
-            <Text >Totla MRP</Text>
-            <Text textAlign={"right"} >500</Text>
+          <Grid
+            gap="5px"
+            mt="5px"
+            pt="5px"
+            pb="5px"
+            borderTop="1px solid #EBEBEB"
+            borderBottom="1px solid #EBEBEB"
+            gridTemplateColumns={"repeat(2, 1fr)"}
+            justifyContent={"space-between"}
+          >
+            <Text>Totla MRP</Text>
+            <Text textAlign={"right"}>₹500</Text>
             <Text>Discount on MRP</Text>
-            <Text textAlign={"right"}>-50</Text>
-            <Text > Coupon Discount</Text>
-            <Text textAlign={"right"}> Apply Coupon </Text>
+            <Text textAlign={"right"} color="green.500">
+              -₹50
+            </Text>
+            <Text> Coupon Discount</Text>
+            <Text textAlign={"right"} cursor="pointer" color="tomato">
+              {" "}
+              Apply Coupon{" "}
+            </Text>
             <Text> Convenience Fee </Text>
-            <Text textAlign={"right"}>100</Text>
+            <Text textAlign={"right"}>₹100</Text>
           </Grid>
+          <Flex justifyContent={"space-between"} mt="5px"  fontWeight={"500"} >
+            <Text>Total Amount</Text>
+            <Text>₹500</Text>
+          </Flex>
+          <Button colorScheme="purple" w="100%" mt="20px" >
+            Place Order
+          </Button>
         </Box>
       </Flex>
     </div>

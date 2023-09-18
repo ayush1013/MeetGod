@@ -70,7 +70,7 @@ const CartProducts = ({ elem, handleQuantity,quantity }) => {
           </Text>
         )}
         <Flex gap="2px">
-          <Button size="xs" variant="outline" colorScheme="blue">Move to Wishlist</Button>
+          <Button size="xs" variant="outline" colorScheme="purple">Move to Wishlist</Button>
           <Button size="xs" variant="outline" colorScheme="red"  >Remove</Button>
         </Flex>
       </Grid>
