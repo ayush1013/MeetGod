@@ -14,6 +14,18 @@ const HomeLeftSection = () => {
     <Box
       w={{ base: "100%", md: "35%", lg: "25%" }}
       display={{ base: "block", md: "block", lg: "block" }}
+      // border="1px solid red"
+      h="90vh"
+      pb="20px"
+      top="65px"
+      position="sticky"
+      overflowY="scroll"
+      sx={{
+        "&::-webkit-scrollbar": {
+          width: "0px",
+          // visibility:"hidden"
+        },
+      }}
     >
       <Box
         w={{ base: "100%", md: "80%", lg: "80%" }}
