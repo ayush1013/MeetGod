@@ -24,6 +24,7 @@ const HomeRightSection = () => {
     >
       <Box
         textAlign="center"
+        border={"1px solid #EBEBEB"}
         bgColor={"white"}
         w={{ base: "100%", md: "68%", lg: "80%" }}
         m="auto"
