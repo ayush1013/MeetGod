@@ -7,8 +7,11 @@ import { products } from "../LocalData/Posts";
 import PriceDetails from "../Components/Cart_Components/PriceDetails";
 import AddressModal from "../Components/Cart_Components/AddressModal";
 
+const address = JSON.parse(localStorage.getItem("address")) || [];
+
 const Cart = () => {
   const [quantity, setQuantity] = useState(1);
+  const [addressData, setAddressData] = useState(address || []);
 
   const handleQuantity = (num) => {
     setQuantity((prev) => prev + num);
@@ -18,6 +21,22 @@ const Cart = () => {
     <Box pb="50px">
       <Navbar />
       <MobNav />
+
+      {/* <Flex border="1px solid black" width={"fit-content"} position="relative" w="500px" h="200px">
+        <Box w="100px" h="100px" border="1px solid blue">
+          1
+        </Box>
+        <Box w="100px" h="100px" border="1px solid red">
+          2
+        </Box>
+        <Box w="100px" h="100px" border="1px solid yellow" position="absolute" right="0" bottom="0">
+          3
+        </Box>
+        <Box w="100px" h="100px" border="1px solid green">
+          4
+        </Box>
+      </Flex> */}
+
       <Flex
         w="100%"
         justifyContent={"center"}
@@ -37,6 +56,7 @@ const Cart = () => {
             products?.map((elem) => {
               return (
                 <CartProducts
+                  key={elem._id}
                   quantity={quantity}
                   handleQuantity={handleQuantity}
                   elem={elem}
@@ -58,9 +78,32 @@ const Cart = () => {
             <Text fontSize="16px" fontWeight="500" color="#666666">
               Address?
             </Text>
-            <Flex pb="10px" mt="10px">
-              <AddressModal/>
-            </Flex>
+            <Box pb="10px" mt="10px" position={"relative"} >
+              {addressData.length > 0 && (
+                <Box border="1px solid #EBEBEB" p="5px" borderRadius="5px" >
+                  <Text>{addressData[0].name}</Text>
+                  <Text>+91 {addressData[0].mobile}</Text>
+                  <Text>
+                    {addressData[0].address}, {addressData[0].town}
+                  </Text>
+                  <Text>{addressData[0].pinCode}</Text>
+                  <Text>
+                    {addressData[0].city}, {addressData[0].state}
+                  </Text>
+                </Box>
+              )}
+              <Box
+                width={"fit-content"}
+                position={addressData.length > 0 ? "absolute" : "static"}
+                right="0"
+                top="-4"
+                zIndex={1}
+                bgColor="white"
+                // border="1px solid black"
+              >
+                <AddressModal />
+              </Box>
+            </Box>
           </Box>
 
           {/* Price Details */}

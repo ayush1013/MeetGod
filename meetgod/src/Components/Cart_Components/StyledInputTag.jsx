@@ -1,4 +1,4 @@
-import { Box, FormLabel, Input } from "@chakra-ui/react";
+import { Box, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React from "react";
 
 const StyledInputTag = ({
@@ -9,9 +9,10 @@ const StyledInputTag = ({
   name,
   value,
   handleChange,
+  error
 }) => {
   return (
-    <Box position="relative" pt="10px" pb="3px">
+    <FormControl position="relative" pt="10px" pb="3px" isInvalid={!error} >
       <Input
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -40,7 +41,7 @@ const StyledInputTag = ({
       >
         {InputName}
       </FormLabel>
-    </Box>
+    </FormControl>
   );
 };
 
