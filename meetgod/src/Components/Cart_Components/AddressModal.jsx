@@ -15,6 +15,8 @@ import {
   FormErrorMessage,
   FormHelperText,
   Input,
+  Flex,
+  Text,
 } from "@chakra-ui/react";
 
 const AddressModal = () => {
@@ -26,7 +28,7 @@ const AddressModal = () => {
   };
 
   const handleBlur = (e) => {
-    if (e.target.value === '') {
+    if (e.target.value === "") {
       setIsActive(false);
     }
   };
@@ -51,105 +53,166 @@ const AddressModal = () => {
           <ModalCloseButton />
           <ModalBody>
             <FormControl isInvalid={isError}>
-              <Box position="relative" mt="10px" >
+            <Text fontSize={"sm"} fontWeight="500">Contect Details</Text>
+              <Box position="relative" >
                 <Input
                   onFocus={handleFocus}
                   onBlur={handleBlur}
+                  mt={isActive?"12px":"0px"}
                   variant="outline"
                   size="md"
-                  mt={isActive ? "24px" : "0px"}
                   position="relative"
                   transition={"0.2s"}
                 />
                 <FormLabel
                   position="absolute"
-                  top={isActive ? "0" : "8px"}
-                  left={isActive? "0" : "1rem"}
+                  top={isActive ? "0px" : "8px"}
+                  left={"1rem"}
                   fontSize={"sm"}
-                  color={isActive ? "#2D72B9" : "gray.500"}
+                  color={"gray.500"}
                   pointerEvents="none"
                   transition="0.2s"
                   zIndex="1"
+                  bgColor="white"
                   // border="1px solid black"
                 >
                   Address (House No., Building)
                 </FormLabel>
               </Box>
 
-              <Box position="relative" mt="10px" >
+              <Box position="relative" mt="5px">
                 <Input
                   onFocus={handleFocus}
                   onBlur={handleBlur}
+                  mt={isActive?"12px":"0px"}
                   variant="outline"
                   size="md"
-                  mt={isActive ? "24px" : "0px"}
                   position="relative"
                   transition={"0.2s"}
                 />
                 <FormLabel
                   position="absolute"
-                  top={isActive ? "0" : "8px"}
-                  left={isActive? "0" : "1rem"}
+                  top={isActive ? "0px" : "8px"}
+                  left={"1rem"}
                   fontSize={"sm"}
-                  color={isActive ? "#2D72B9" : "gray.500"}
+                  color={"gray.500"}
                   pointerEvents="none"
                   transition="0.2s"
                   zIndex="1"
+                  bgColor="white"
                   // border="1px solid black"
                 >
                   Town
                 </FormLabel>
               </Box>
 
-              <Box position="relative" mt="10px" >
+              <Box position="relative" mt="5px">
                 <Input
                   onFocus={handleFocus}
                   onBlur={handleBlur}
+                  mt={isActive?"12px":"0px"}
                   variant="outline"
                   size="md"
-                  mt={isActive ? "24px" : "0px"}
                   position="relative"
                   transition={"0.2s"}
                 />
                 <FormLabel
                   position="absolute"
-                  top={isActive ? "0" : "8px"}
-                  left={isActive? "0" : "1rem"}
+                  top={isActive ? "0px" : "8px"}
+                  left={"1rem"}
                   fontSize={"sm"}
-                  color={isActive ? "#2D72B9" : "gray.500"}
+                  color={"gray.500"}
                   pointerEvents="none"
                   transition="0.2s"
                   zIndex="1"
+                  bgColor="white"
                   // border="1px solid black"
                 >
                   Pin Code
                 </FormLabel>
               </Box>
 
-              <Box position="relative" mt="10px" >
+              <Box position="relative" mt="5px">
                 <Input
                   onFocus={handleFocus}
                   onBlur={handleBlur}
+                  mt={isActive?"12px":"0px"}
                   variant="outline"
                   size="md"
-                  mt={isActive ? "24px" : "0px"}
                   position="relative"
                   transition={"0.2s"}
                 />
                 <FormLabel
                   position="absolute"
-                  top={isActive ? "0" : "8px"}
-                  left={isActive? "0" : "1rem"}
+                  top={isActive ? "0px" : "8px"}
+                  left={"1rem"}
                   fontSize={"sm"}
-                  color={isActive ? "#2D72B9" : "gray.500"}
+                  color={"gray.500"}
                   pointerEvents="none"
                   transition="0.2s"
                   zIndex="1"
+                  bgColor="white"
                   // border="1px solid black"
                 >
                   City/District
                 </FormLabel>
               </Box>
+
+              <Flex gap="5px" >
+                <Box position="relative" mt="5px">
+                  <Input
+                     onFocus={handleFocus}
+                     onBlur={handleBlur}
+                     mt={isActive?"12px":"0px"}
+                     variant="outline"
+                     size="md"
+                     position="relative"
+                     transition={"0.2s"}
+                   />
+                   <FormLabel
+                     position="absolute"
+                     top={isActive ? "0px" : "8px"}
+                     left={"1rem"}
+                     fontSize={"sm"}
+                     color={"gray.500"}
+                     pointerEvents="none"
+                     transition="0.2s"
+                     zIndex="1"
+                     bgColor="white"
+                    // border="1px solid black"
+                  >
+                    State
+                  </FormLabel>
+                </Box>
+
+                <Box position="relative" mt="5px">
+                  <Input
+                     onFocus={handleFocus}
+                     onBlur={handleBlur}
+                     mt={isActive?"12px":"0px"}
+                     variant="outline"
+                     size="md"
+                     position="relative"
+                     transition={"0.2s"}
+                   />
+                   <FormLabel
+                     position="absolute"
+                     top={isActive ? "0px" : "8px"}
+                     left={"1rem"}
+                     fontSize={"sm"}
+                     color={"gray.500"}
+                     pointerEvents="none"
+                     transition="0.2s"
+                     zIndex="1"
+                     bgColor="white"
+                    // border="1px solid black"
+                  >
+                    Country
+                  </FormLabel>
+                </Box>
+              </Flex>
+
+              <Text fontSize={"sm"} fontWeight="500" mt="10px" >Contect Details</Text>
             </FormControl>
           </ModalBody>
 
