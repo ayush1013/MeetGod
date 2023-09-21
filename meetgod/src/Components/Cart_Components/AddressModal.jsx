@@ -31,25 +31,38 @@ const addressData = {
   country: "",
 };
 
-const AddressModal = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isActive, setIsActive] = useState(false);
+const activeInputTag = {
+  name: false,
+  mobile: false,
+  address: false,
+  town: false,
+  pinCode: false,
+  city: false,
+  state: false,
+  country: false,
+};
 
+const AddressModal = () => {
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [activeTag, setActiveTag] = useState(activeInputTag);
   const [formData, setFormData] = useState(addressData);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  console.log(formData);
+  // console.log(formData);
 
-  const handleFocus = () => {
-    setIsActive(true);
+  const handleFocus = (e) => {
+    setActiveTag({ ...activeTag, [e.target.name]: true });
   };
 
   const handleBlur = (e) => {
     if (e.target.value === "") {
-      setIsActive(false);
+      setActiveTag({ ...activeTag, [e.target.name]: false });
+    } else {
+      setActiveTag({ ...activeTag, [e.target.name]: true });
     }
   };
 
@@ -88,7 +101,7 @@ const AddressModal = () => {
                 Contect Details
               </Text>
               <StyledInputTag
-                isActive={isActive}
+                isActive={activeTag.address}
                 handleBlur={handleBlur}
                 handleFocus={handleFocus}
                 handleChange={handleChange}
@@ -97,7 +110,7 @@ const AddressModal = () => {
                 InputName={"Address (House No, Building)"}
               />
               <StyledInputTag
-                isActive={isActive}
+                isActive={activeTag.town}
                 handleBlur={handleBlur}
                 handleFocus={handleFocus}
                 handleChange={handleChange}
@@ -106,7 +119,7 @@ const AddressModal = () => {
                 InputName={"Town"}
               />
               <StyledInputTag
-                isActive={isActive}
+                isActive={activeTag.pinCode}
                 handleBlur={handleBlur}
                 handleFocus={handleFocus}
                 handleChange={handleChange}
@@ -115,7 +128,7 @@ const AddressModal = () => {
                 InputName={"Pin Code"}
               />
               <StyledInputTag
-                isActive={isActive}
+                isActive={activeTag.city}
                 handleBlur={handleBlur}
                 handleFocus={handleFocus}
                 handleChange={handleChange}
@@ -125,7 +138,7 @@ const AddressModal = () => {
               />
               <Flex gap="5px">
                 <StyledInputTag
-                  isActive={isActive}
+                  isActive={activeTag.state}
                   handleBlur={handleBlur}
                   handleFocus={handleFocus}
                   handleChange={handleChange}
@@ -134,7 +147,7 @@ const AddressModal = () => {
                   InputName={"State"}
                 />
                 <StyledInputTag
-                  isActive={isActive}
+                  isActive={activeTag.country}
                   handleBlur={handleBlur}
                   handleFocus={handleFocus}
                   handleChange={handleChange}
@@ -148,7 +161,7 @@ const AddressModal = () => {
                 Contect Details
               </Text>
               <StyledInputTag
-                isActive={isActive}
+                isActive={activeTag.name}
                 handleBlur={handleBlur}
                 handleFocus={handleFocus}
                 handleChange={handleChange}
@@ -157,7 +170,7 @@ const AddressModal = () => {
                 InputName={"Name"}
               />
               <StyledInputTag
-                isActive={isActive}
+                isActive={activeTag.mobile}
                 handleBlur={handleBlur}
                 handleFocus={handleFocus}
                 handleChange={handleChange}

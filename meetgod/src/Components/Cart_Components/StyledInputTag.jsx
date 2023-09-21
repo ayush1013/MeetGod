@@ -1,7 +1,15 @@
 import { Box, FormLabel, Input } from "@chakra-ui/react";
 import React from "react";
 
-const StyledInputTag = ({ isActive, handleFocus, handleBlur, InputName,name,value,handleChange }) => {
+const StyledInputTag = ({
+  isActive,
+  handleFocus,
+  handleBlur,
+  InputName,
+  name,
+  value,
+  handleChange,
+}) => {
   return (
     <Box position="relative" pt="10px" pb="3px">
       <Input
@@ -26,6 +34,8 @@ const StyledInputTag = ({ isActive, handleFocus, handleBlur, InputName,name,valu
         transition="0.2s"
         zIndex="1"
         bgColor="white"
+        pl="2px"
+        pr="2px"
         // border="1px solid black"
       >
         {InputName}
