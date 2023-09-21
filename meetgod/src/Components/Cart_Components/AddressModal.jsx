@@ -20,9 +20,28 @@ import {
 } from "@chakra-ui/react";
 import StyledInputTag from "./StyledInputTag";
 
+const addressData = {
+  name: "",
+  mobile: "",
+  address: "",
+  town: "",
+  pinCode: "",
+  city: "",
+  state: "",
+  country: "",
+};
+
 const AddressModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isActive, setIsActive] = useState(false);
+
+  const [formData, setFormData] = useState(addressData);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  console.log(formData);
 
   const handleFocus = () => {
     setIsActive(true);
@@ -62,6 +81,7 @@ const AddressModal = () => {
             Add A New Address
           </ModalHeader>
           <ModalCloseButton />
+
           <ModalBody>
             <FormControl isInvalid={isError}>
               <Text fontSize={"sm"} fontWeight="500">
@@ -71,24 +91,36 @@ const AddressModal = () => {
                 isActive={isActive}
                 handleBlur={handleBlur}
                 handleFocus={handleFocus}
+                handleChange={handleChange}
+                name={"address"}
+                value={formData.address}
                 InputName={"Address (House No, Building)"}
               />
               <StyledInputTag
                 isActive={isActive}
                 handleBlur={handleBlur}
                 handleFocus={handleFocus}
+                handleChange={handleChange}
+                name={"town"}
+                value={formData.town}
                 InputName={"Town"}
               />
               <StyledInputTag
                 isActive={isActive}
                 handleBlur={handleBlur}
                 handleFocus={handleFocus}
+                handleChange={handleChange}
+                name={"pinCode"}
+                value={formData.pinCode}
                 InputName={"Pin Code"}
               />
               <StyledInputTag
                 isActive={isActive}
                 handleBlur={handleBlur}
                 handleFocus={handleFocus}
+                handleChange={handleChange}
+                name={"city"}
+                value={formData.city}
                 InputName={"City"}
               />
               <Flex gap="5px">
@@ -96,12 +128,18 @@ const AddressModal = () => {
                   isActive={isActive}
                   handleBlur={handleBlur}
                   handleFocus={handleFocus}
+                  handleChange={handleChange}
+                  name={"state"}
+                  value={formData.state}
                   InputName={"State"}
                 />
                 <StyledInputTag
                   isActive={isActive}
                   handleBlur={handleBlur}
                   handleFocus={handleFocus}
+                  handleChange={handleChange}
+                  name={"country"}
+                  value={formData.country}
                   InputName={"Country"}
                 />
               </Flex>
@@ -113,12 +151,18 @@ const AddressModal = () => {
                 isActive={isActive}
                 handleBlur={handleBlur}
                 handleFocus={handleFocus}
+                handleChange={handleChange}
+                name={"name"}
+                value={formData.name}
                 InputName={"Name"}
               />
               <StyledInputTag
                 isActive={isActive}
                 handleBlur={handleBlur}
                 handleFocus={handleFocus}
+                handleChange={handleChange}
+                name={"mobile"}
+                value={formData.mobile}
                 InputName={"Mobile No."}
               />
 
