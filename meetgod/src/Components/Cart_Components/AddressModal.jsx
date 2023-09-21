@@ -18,6 +18,7 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
+import StyledInputTag from "./StyledInputTag";
 
 const AddressModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -46,182 +47,94 @@ const AddressModal = () => {
         Add OR Change Address
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        size={{ base: "full", md: "md", lg: "md" }}
+      >
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+        <ModalContent border="1px solid black">
+          <ModalHeader
+            fontSize={"md"}
+            color="gray.400"
+            borderBottom={"1px solid #EBEBEB"}
+          >
+            Add A New Address
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <FormControl isInvalid={isError}>
-            <Text fontSize={"sm"} fontWeight="500">Contect Details</Text>
-              <Box position="relative" >
-                <Input
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                  mt={isActive?"12px":"0px"}
-                  variant="outline"
-                  size="md"
-                  position="relative"
-                  transition={"0.2s"}
+              <Text fontSize={"sm"} fontWeight="500">
+                Contect Details
+              </Text>
+              <StyledInputTag
+                isActive={isActive}
+                handleBlur={handleBlur}
+                handleFocus={handleFocus}
+                InputName={"Address (House No, Building)"}
+              />
+              <StyledInputTag
+                isActive={isActive}
+                handleBlur={handleBlur}
+                handleFocus={handleFocus}
+                InputName={"Town"}
+              />
+              <StyledInputTag
+                isActive={isActive}
+                handleBlur={handleBlur}
+                handleFocus={handleFocus}
+                InputName={"Pin Code"}
+              />
+              <StyledInputTag
+                isActive={isActive}
+                handleBlur={handleBlur}
+                handleFocus={handleFocus}
+                InputName={"City"}
+              />
+              <Flex gap="5px">
+                <StyledInputTag
+                  isActive={isActive}
+                  handleBlur={handleBlur}
+                  handleFocus={handleFocus}
+                  InputName={"State"}
                 />
-                <FormLabel
-                  position="absolute"
-                  top={isActive ? "0px" : "8px"}
-                  left={"1rem"}
-                  fontSize={"sm"}
-                  color={"gray.500"}
-                  pointerEvents="none"
-                  transition="0.2s"
-                  zIndex="1"
-                  bgColor="white"
-                  // border="1px solid black"
-                >
-                  Address (House No., Building)
-                </FormLabel>
-              </Box>
-
-              <Box position="relative" mt="5px">
-                <Input
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                  mt={isActive?"12px":"0px"}
-                  variant="outline"
-                  size="md"
-                  position="relative"
-                  transition={"0.2s"}
+                <StyledInputTag
+                  isActive={isActive}
+                  handleBlur={handleBlur}
+                  handleFocus={handleFocus}
+                  InputName={"Country"}
                 />
-                <FormLabel
-                  position="absolute"
-                  top={isActive ? "0px" : "8px"}
-                  left={"1rem"}
-                  fontSize={"sm"}
-                  color={"gray.500"}
-                  pointerEvents="none"
-                  transition="0.2s"
-                  zIndex="1"
-                  bgColor="white"
-                  // border="1px solid black"
-                >
-                  Town
-                </FormLabel>
-              </Box>
-
-              <Box position="relative" mt="5px">
-                <Input
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                  mt={isActive?"12px":"0px"}
-                  variant="outline"
-                  size="md"
-                  position="relative"
-                  transition={"0.2s"}
-                />
-                <FormLabel
-                  position="absolute"
-                  top={isActive ? "0px" : "8px"}
-                  left={"1rem"}
-                  fontSize={"sm"}
-                  color={"gray.500"}
-                  pointerEvents="none"
-                  transition="0.2s"
-                  zIndex="1"
-                  bgColor="white"
-                  // border="1px solid black"
-                >
-                  Pin Code
-                </FormLabel>
-              </Box>
-
-              <Box position="relative" mt="5px">
-                <Input
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                  mt={isActive?"12px":"0px"}
-                  variant="outline"
-                  size="md"
-                  position="relative"
-                  transition={"0.2s"}
-                />
-                <FormLabel
-                  position="absolute"
-                  top={isActive ? "0px" : "8px"}
-                  left={"1rem"}
-                  fontSize={"sm"}
-                  color={"gray.500"}
-                  pointerEvents="none"
-                  transition="0.2s"
-                  zIndex="1"
-                  bgColor="white"
-                  // border="1px solid black"
-                >
-                  City/District
-                </FormLabel>
-              </Box>
-
-              <Flex gap="5px" >
-                <Box position="relative" mt="5px">
-                  <Input
-                     onFocus={handleFocus}
-                     onBlur={handleBlur}
-                     mt={isActive?"12px":"0px"}
-                     variant="outline"
-                     size="md"
-                     position="relative"
-                     transition={"0.2s"}
-                   />
-                   <FormLabel
-                     position="absolute"
-                     top={isActive ? "0px" : "8px"}
-                     left={"1rem"}
-                     fontSize={"sm"}
-                     color={"gray.500"}
-                     pointerEvents="none"
-                     transition="0.2s"
-                     zIndex="1"
-                     bgColor="white"
-                    // border="1px solid black"
-                  >
-                    State
-                  </FormLabel>
-                </Box>
-
-                <Box position="relative" mt="5px">
-                  <Input
-                     onFocus={handleFocus}
-                     onBlur={handleBlur}
-                     mt={isActive?"12px":"0px"}
-                     variant="outline"
-                     size="md"
-                     position="relative"
-                     transition={"0.2s"}
-                   />
-                   <FormLabel
-                     position="absolute"
-                     top={isActive ? "0px" : "8px"}
-                     left={"1rem"}
-                     fontSize={"sm"}
-                     color={"gray.500"}
-                     pointerEvents="none"
-                     transition="0.2s"
-                     zIndex="1"
-                     bgColor="white"
-                    // border="1px solid black"
-                  >
-                    Country
-                  </FormLabel>
-                </Box>
               </Flex>
 
-              <Text fontSize={"sm"} fontWeight="500" mt="10px" >Contect Details</Text>
+              <Text fontSize={"sm"} fontWeight="500" mt="10px">
+                Contect Details
+              </Text>
+              <StyledInputTag
+                isActive={isActive}
+                handleBlur={handleBlur}
+                handleFocus={handleFocus}
+                InputName={"Name"}
+              />
+              <StyledInputTag
+                isActive={isActive}
+                handleBlur={handleBlur}
+                handleFocus={handleFocus}
+                InputName={"Mobile No."}
+              />
+
+              <Button
+                display="block"
+                m="auto"
+                mt="10px"
+                w="100px"
+                colorScheme="blue"
+                mr={0}
+                onClick={onClose}
+              >
+                Save
+              </Button>
             </FormControl>
           </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </Box>
