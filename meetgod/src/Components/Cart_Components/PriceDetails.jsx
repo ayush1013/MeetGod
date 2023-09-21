@@ -6,43 +6,21 @@ const PriceDetails = () => {
   return (
     <Box
       // border="1px solid black"
-      w={{ base: "100%", md: "100%", lg: "26%" }}
-      bgColor="white"
-      p="10px"
-      border="1px solid #EBEBEB"
-      h="fit-content"
+      w={{ base: "100%", md: "100%", lg: "100%" }}
     >
-      {/* Address Section */}
-      <Box>
-        <Text
-          fontSize="16px"
-          fontWeight="500"
-          color="#666666"
-          pt="5px"
-          borderTop="1px solid #EBEBEB"
-        >
-          Address?
-        </Text>
-        <Flex pb="10px" mt="10px">
-          <Button size={"sm"} variant="outline" colorScheme="purple">
-            Add OR Change Address
-          </Button>
-        </Flex>
-      </Box>
+      
 
       {/* Price Details */}
 
-      <Box>
-        <Text
-          fontSize="16px"
-          fontWeight="500"
-          color="#666666"
-          pt="5px"
-          borderTop="1px solid #EBEBEB"
-        >
+      <Box pt="5px" borderTop="1px solid #EBEBEB">
+        <Text fontSize="16px" fontWeight="500" color="#666666">
           Price Details
           <span style={{ paddingLeft: "5px", color: "tomato" }}>
-            ({products.length > 0 && products.length} Items)
+            (
+            {products.length > 0 && products.length === 1
+              ? `${products.length} Item`
+              : `${products.length} Items`}
+            )
           </span>
         </Text>
         <Grid
@@ -71,8 +49,8 @@ const PriceDetails = () => {
 
       {/* Total Amount And Order */}
 
-      <Box>
-        <Flex justifyContent={"space-between"} mt="5px" fontWeight={"500"}>
+      <Box mt="5px">
+        <Flex justifyContent={"space-between"} fontWeight={"500"}>
           <Text>Total Amount</Text>
           <Text>₹500</Text>
         </Flex>

@@ -20,12 +20,14 @@ const Sections = ({section,setSection,setIsHover,isHover}) => {
   return (
     <Flex
         display={{ base: "none", md: "flex", lg: "flex" }}
-        gap={{ base: "30px", md: "30px", lg: "40px" }}
+        // gap={{ base: "30px", md: "30px", lg: "40px" }}
+        justifyContent={"space-around"}
         ml={{ base: "10%", md: "10%", lg: "16%" }}
         cursor={"pointer"}
+        w={{base:"40%", md:"45%", lg:"40%"}}
       >
         <Link to="/">
-          <Box onClick={() => setSection("/")} value="/" textAlign={"center"}>
+          <Box onClick={() => setSection("/")} value="/" textAlign={"center"}  >
             <HomeIcon
               style={{
                 color: section == "/" ? "black" : "#666666",
@@ -49,6 +51,8 @@ const Sections = ({section,setSection,setIsHover,isHover}) => {
             onClick={() => setSection("/posts")}
             value="/posts"
             textAlign={"center"}
+            
+            w="fit-content"
           >
             <PostAddSharpIcon
               style={{
@@ -73,6 +77,7 @@ const Sections = ({section,setSection,setIsHover,isHover}) => {
             onClick={() => setSection("/spiritual")}
             value="/spiritual"
             textAlign={"center"}
+            
           >
             <SpaIcon
               style={{
@@ -159,6 +164,7 @@ const Sections = ({section,setSection,setIsHover,isHover}) => {
             onClick={() => setSection("/products")}
             value="/products"
             textAlign={"center"}
+            
           >
             <ShoppingCartIcon
               style={{

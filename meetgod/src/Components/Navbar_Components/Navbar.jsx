@@ -48,15 +48,17 @@ const Navbar = ({ page }) => {
       top="0"
     >
       <Flex w={{ base: "90%", md: "auto", lg: "auto" }}>
-        <Link to="/" >
-        <Box w={{ base: "48px", md: "62px", lg: "62px" }} >
-        <Image
-          src="meetgod-logo.png"
-          w={"100%"}
-          borderRadius={"15%"}
-        />
-        </Box>
+
+        {/* Logo Image */}
+
+        <Link to="/">
+          <Box w={{ base: "48px", md: "62px", lg: "62px" }}>
+            <Image src="meetgod-logo.png" w={"100%"} borderRadius={"15%"} />
+          </Box>
         </Link>
+
+        {/* Search Bar */}
+
         <Flex
           alignItems={"center"}
           pl={{ base: "8px", md: "20px", lg: "30px" }}
@@ -87,6 +89,7 @@ const Navbar = ({ page }) => {
           }}
         />
       </Box>
+      
       <Drawer
         isOpen={isOpen}
         placement="right"
@@ -107,7 +110,6 @@ const Navbar = ({ page }) => {
           <DrawerFooter>
             <Button w="100%">Logout</Button>
           </DrawerFooter>
-          
         </DrawerContent>
       </Drawer>
 
