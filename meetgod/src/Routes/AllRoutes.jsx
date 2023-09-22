@@ -8,6 +8,7 @@ import Cart from '../Pages/Cart'
 import SingleProduct from '../Pages/SingleProduct'
 import Home from '../Pages/Home'
 import Spiritual from '../Pages/Spiritual'
+import Payment from '../Pages/Payment'
 
 const AllRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const AllRoutes = () => {
       <Route path="/posts"  element={<Posts/>}></Route>
       <Route path="/cart"  element={<Cart/>}></Route>
       <Route path="/product/:id"  element={<SingleProduct/>}></Route>
+      <Route path="/payment"  element={<Payment/>}></Route>
     </Routes>
   )
 }

@@ -1,8 +1,15 @@
 import React from "react";
 import { Box, Flex, Grid, Image, Text, Button } from "@chakra-ui/react";
 import { products } from "../../LocalData/Posts";
+import { useNavigate } from "react-router-dom";
 
 const PriceDetails = () => {
+  const navigate = useNavigate();
+
+  const handleOrder = ()=>{
+    navigate("/payment");
+  }
+
   return (
     <Box
       // border="1px solid black"
@@ -54,7 +61,7 @@ const PriceDetails = () => {
           <Text>Total Amount</Text>
           <Text>₹500</Text>
         </Flex>
-        <Button colorScheme="purple" w="100%" mt="20px">
+        <Button colorScheme="purple" w="100%" mt="20px" onClick={handleOrder} >
           Place Order
         </Button>
       </Box>

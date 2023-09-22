@@ -12,13 +12,11 @@ import {
   Box,
   Button,
   Flex,
-  Grid,
   Image,
   Table,
   Tbody,
   Text,
   Th,
-  Thead,
   Tr,
 } from "@chakra-ui/react";
 import ProductSlider from "../Components/Products_Components/ProductSlider";
