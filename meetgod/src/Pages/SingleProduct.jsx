@@ -50,6 +50,10 @@ const SingleProduct = () => {
     }
   }, [data, dispatch]);
 
+  useEffect(()=>{
+    document.title = "Product"
+  },[])
+
   return (
     <Box pb="70px" bgColor={"white"}>
       <Navbar />

@@ -1,8 +1,13 @@
 import { Box, Button, Grid, Image, Input, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
+
+  useEffect(()=>{
+    document.title = "Signup"
+  },[])
+
   return (
     <Box
       h="100vh"

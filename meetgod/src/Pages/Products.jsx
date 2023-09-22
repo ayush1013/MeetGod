@@ -34,6 +34,10 @@ const Products = () => {
     setPage(newPage);
   };
 
+  useEffect(()=>{
+    document.title = "Shop"
+  },[])
+
   // console.log("initialPage",initialPage)
 
   return (

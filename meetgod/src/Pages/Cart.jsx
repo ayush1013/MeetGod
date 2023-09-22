@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar_Components/Navbar";
 import MobNav from "../Components/Navbar_Components/MobNav";
 import { Box, Flex, Grid, Image, Text, Button } from "@chakra-ui/react";
@@ -16,6 +16,10 @@ const Cart = () => {
   const handleQuantity = (num) => {
     setQuantity((prev) => prev + num);
   };
+
+  useEffect(()=>{
+    document.title = "Cart"
+  },[])
 
   return (
     <Box pb="50px">
