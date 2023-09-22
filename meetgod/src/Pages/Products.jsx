@@ -1,25 +1,13 @@
 import React, { useEffect, useState } from "react";
-import CarouselComponent from "../Components/Carousel";
-import {
-  Box,
-  Button,
-  Flex,
-  Grid,
-  GridItem,
-  Image,
-  Radio,
-  RadioGroup,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { getData } from "../Redux/ProductsReducer/action";
-import FilterSortBar from "../Components/FilterSortBar";
-import Pagination from "../Components/Pagination";
-import ProductsList from "../Components/ProductsList";
+import CarouselComponent from "../Components/Products_Components/Carousel";
+import FilterSortBar from "../Components/Products_Components/FilterSortBar";
+import Pagination from "../Components/Products_Components/Pagination";
+import ProductsList from "../Components/Products_Components/ProductsList";
 import { useSearchParams } from "react-router-dom";
 import Navbar from "../Components/Navbar_Components/Navbar";
 import MobNav from "../Components/Navbar_Components/MobNav";
+import { useDispatch, useSelector } from "react-redux";
+import { Box, Flex } from "@chakra-ui/react";
 
 const Products = () => {
   const { currentPage, totalPages } = useSelector(
@@ -34,9 +22,9 @@ const Products = () => {
     setPage(newPage);
   };
 
-  useEffect(()=>{
-    document.title = "Shop"
-  },[])
+  useEffect(() => {
+    document.title = "Shop";
+  }, []);
 
   // console.log("initialPage",initialPage)
 

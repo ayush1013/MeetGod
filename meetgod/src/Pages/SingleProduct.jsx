@@ -21,7 +21,7 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import ProductSlider from "../Components/ProductSlider";
+import ProductSlider from "../Components/Products_Components/ProductSlider";
 
 const SingleProduct = () => {
   const data = useSelector((store) => store.productReducer.singleProduct);

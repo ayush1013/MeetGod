@@ -19,7 +19,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import FilterSortBar from "../FilterSortBar";
+import FilterSortBar from "../Products_Components/FilterSortBar";
 import Sections from "./Sections";
 
 const token = true;

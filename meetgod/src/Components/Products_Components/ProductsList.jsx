@@ -12,7 +12,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { getData } from "../Redux/ProductsReducer/action";
+import { getData } from "../../Redux/ProductsReducer/action";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 const ProductsList = ({ page }) => {
