@@ -10,7 +10,7 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
   const { type, payload } = action;
 
-  switch (tyoe) {
+  switch (type) {
     case types.POST_SIGNUP_REQUEST:
       return { ...state, isLoading: true };
     case types.POST_SIGNUP_SUCCESS:
