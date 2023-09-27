@@ -19,11 +19,11 @@ export const reducer = (state = initialState, action) => {
       return { ...state, isLoading: false, isError: true };
 
     case types.POST_LOGIN_REQUEST:
-      return { ...state, isLoading: true };
+      return { ...state, isLoading: true, isError: false };
     case types.POST_LOGIN_SUCCESS:
-      return { ...state, isLoading: false, token: payload };
+      return { ...state, isLoading: false, token: payload, isError: false };
     case types.POST_LOGIN_ERROR:
-      return { ...state, isLoading: false, isError: true };
+      return { ...state, isLoading: false, isError: payload };
     default:
       return state;
   }

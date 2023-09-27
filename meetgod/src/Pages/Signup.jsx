@@ -71,17 +71,29 @@ const Signup = () => {
   console.log("signupSuccess", signupSuccess);
   console.log("isLoading", isLoading);
 
-  if (signupSuccess === "Successfull") {
-    toast({
-      title: "Signup Success",
-      description: "You have uccessfully signed up please login",
-      status: "success",
-      duration: 3000,
-      isClosable: true,
-      position: "top",
-    });
-    navigate("/login");
-  }
+  useEffect(() => {
+    if (signupSuccess === "Successfull") {
+      toast({
+        title: "Signup Success",
+        description: "You have uccessfully signed up please login",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+      navigate("/login");
+    } else if (signupSuccess === "User already exists") {
+      toast({
+        title: "Email Already Exists",
+        description:
+          "This email is already registered please use a different email address",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
+    }
+  }, [signupSuccess]);
 
   useEffect(() => {
     document.title = "Signup";

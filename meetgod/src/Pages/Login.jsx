@@ -1,15 +1,92 @@
-import React, { useEffect } from "react";
-import { Box, Button, Grid, Image, Input, Text } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Button,
+  Grid,
+  Image,
+  Input,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { userSignupPost } from "../Redux/AuthReducer/action";
+import { userLoginPost } from "../Redux/AuthReducer/action";
+
+const intialUserData = {
+  email: "",
+  password: "",
+};
 
 const Login = () => {
+  const [userData, setUserData] = useState(intialUserData);
+  const [confirmPass, setConfirmPass] = useState("");
+  const token = useSelector((store) => store.AuthReducer.token);
+  const isLoading = useSelector((store) => store.AuthReducer.isLoading);
+  const isError = useSelector((store) => store.AuthReducer.isError);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const toast = useToast();
 
-  useEffect(()=>{
-    document.title = "Login"
-  },[])
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(userData, confirmPass);
+
+    if (userData.email && userData.password) {
+      dispatch(userLoginPost(userData));
+    } else {
+      toast({
+        title: "Wrong Credentials",
+        description: "Wrong Email or Password",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    }
+  };
+
+  // console.log("token", token);
+  // console.log("isError", isError);
+
+  useEffect(() => {
+    if (token && !isError) {
+      toast({
+        title: "Login Success",
+        description: "You have uccessfully Loged in",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    } else if (isError === "Wrong password") {
+      toast({
+        title: "Wrong Password",
+        description: "Wrong Password",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    } else if (isError === "User does not exist with this email") {
+      toast({
+        title: "Email Is Not Valid",
+        description: "User does not exist with this email",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    }
+  }, [isError, token]);
+
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
 
   return (
     <Box
@@ -28,7 +105,7 @@ const Login = () => {
           w={{ base: "100%", md: "100%", lg: "100%" }}
           borderRadius={"10px 10px 0px 0px"}
         />
-        <form>
+        <form onSubmit={handleSubmit}>
           <Grid
             h={{ base: "70vh", md: "auto", lg: "auto" }}
             w="100%"
@@ -41,20 +118,23 @@ const Login = () => {
           >
             <Input
               placeholder="Email"
-              value={""}
-              name="last_name"
-              onChange={""}
+              value={userData.email}
+              name="email"
+              onChange={handleChange}
               focusBorderColor="#F7F7F7"
             />
             <Input
               placeholder="Password"
-              value={""}
+              value={userData.password}
               name="password"
-              onChange={""}
+              onChange={handleChange}
               focusBorderColor="#F7F7F7"
             />
             <Button
-              display={"block"}
+              isLoading={isLoading}
+              loadingText="Loging..."
+              type="submit"
+              // display={"block"}
               w="50%"
               m="auto"
               color={"white"}
