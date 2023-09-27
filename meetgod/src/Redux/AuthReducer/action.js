@@ -31,3 +31,7 @@ export const userLoginPost = (userData) => (dispatch) => {
     });
 };
 
+export const signupReset = ()=>(dispatch)=>{
+  dispatch({type: types.POST_SIGNUP_RESET})
+}
+

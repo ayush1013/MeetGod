@@ -10,7 +10,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { userSignupPost } from "../Redux/AuthReducer/action";
+import { signupReset, userSignupPost } from "../Redux/AuthReducer/action";
 
 const intialUserData = {
   name: "",
@@ -22,8 +22,7 @@ const intialUserData = {
 const Signup = () => {
   const [userData, setUserData] = useState(intialUserData);
   const [confirmPass, setConfirmPass] = useState("");
-  const signupSuccess = useSelector((store) => store.AuthReducer.signupSuccess);
-  const isLoading = useSelector((store) => store.AuthReducer.isLoading);
+  const signupStatus = useSelector((store) => store.AuthReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toast = useToast();
@@ -57,7 +56,6 @@ const Signup = () => {
         });
       }
     } else {
-      // alert("please fill all fields");
       toast({
         title: "Wrong Credentials",
         description: "please fill all required fields",
@@ -68,11 +66,11 @@ const Signup = () => {
       });
     }
   };
-  console.log("signupSuccess", signupSuccess);
-  console.log("isLoading", isLoading);
+  console.log("signupSuccess", signupStatus.signupSuccess);
+  console.log("isLoading", signupStatus.isLoading);
 
   useEffect(() => {
-    if (signupSuccess === "Successfull") {
+    if (signupStatus.signupSuccess === "Successfull") {
       toast({
         title: "Signup Success",
         description: "You have uccessfully signed up please login",
@@ -82,7 +80,8 @@ const Signup = () => {
         position: "top",
       });
       navigate("/login");
-    } else if (signupSuccess === "User already exists") {
+      dispatch(signupReset());
+    } else if (signupStatus.signupSuccess === "User already exists") {
       toast({
         title: "Email Already Exists",
         description:
@@ -93,7 +92,7 @@ const Signup = () => {
         position: "top",
       });
     }
-  }, [signupSuccess]);
+  }, [signupStatus.signupSuccess]);
 
   useEffect(() => {
     document.title = "Signup";
@@ -163,7 +162,7 @@ const Signup = () => {
               focusBorderColor="#F7F7F7"
             />
             <Button
-              isLoading={isLoading}
+              isLoading={signupStatus.isLoading}
               loadingText="Signing up..."
               type="submit"
               // display={"block"}
