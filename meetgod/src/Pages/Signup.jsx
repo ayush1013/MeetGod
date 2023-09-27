@@ -15,6 +15,7 @@ const Signup = () => {
   const [userData, setUserData] = useState(intialUserData);
   const [confirmPass, setConfirmPass] = useState("");
   const signupSuccess = useSelector((store) => store.AuthReducer.signupSuccess);
+  const isLoading = useSelector((store) => store.AuthReducer.signupSuccess);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -73,7 +74,7 @@ const Signup = () => {
           >
             <Input
               placeholder="First Name"
-              value={userData.email}
+              value={userData.name}
               name="name"
               onChange={handleChange}
               focusBorderColor="#F7F7F7"
