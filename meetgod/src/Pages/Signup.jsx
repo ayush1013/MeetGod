@@ -1,7 +1,15 @@
-import { Box, Button, Grid, Image, Input, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Grid,
+  Image,
+  Input,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { userSignupPost } from "../Redux/AuthReducer/action";
 
 const intialUserData = {
@@ -15,8 +23,10 @@ const Signup = () => {
   const [userData, setUserData] = useState(intialUserData);
   const [confirmPass, setConfirmPass] = useState("");
   const signupSuccess = useSelector((store) => store.AuthReducer.signupSuccess);
-  const isLoading = useSelector((store) => store.AuthReducer.signupSuccess);
+  const isLoading = useSelector((store) => store.AuthReducer.isLoading);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const toast = useToast();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,19 +36,52 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(userData, confirmPass);
+
     if (
-      confirmPass === userData.password &&
       userData.email &&
       userData.password &&
       userData.name &&
       userData.lastname
     ) {
-      dispatch(userSignupPost(userData));
+      if (confirmPass === userData.password) {
+        dispatch(userSignupPost(userData));
+      } else {
+        // alert("Passwords do not match");
+        toast({
+          title: "Wrong Password",
+          description: "Passwords do not match",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+      }
     } else {
-      alert("Passwords do not match");
+      // alert("please fill all fields");
+      toast({
+        title: "Wrong Credentials",
+        description: "please fill all required fields",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
     }
   };
   console.log("signupSuccess", signupSuccess);
+  console.log("isLoading", isLoading);
+
+  if (signupSuccess === "Successfull") {
+    toast({
+      title: "Signup Success",
+      description: "You have uccessfully signed up please login",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+      position: "top",
+    });
+    navigate("/login");
+  }
 
   useEffect(() => {
     document.title = "Signup";
@@ -108,8 +151,10 @@ const Signup = () => {
               focusBorderColor="#F7F7F7"
             />
             <Button
+              isLoading={isLoading}
+              loadingText="Signing up..."
               type="submit"
-              display={"block"}
+              // display={"block"}
               w="50%"
               m="auto"
               color={"white"}
