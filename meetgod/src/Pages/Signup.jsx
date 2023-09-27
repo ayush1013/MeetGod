@@ -18,20 +18,26 @@ const Signup = () => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
-    setUserData({...userData, [name]: value});
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
   };
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(userData, confirmPass)
-    if(confirmPass === userData.password){
-      dispatch(userSignupPost());
-    }else{
-      alert("Passwords do not match")
+    console.log(userData, confirmPass);
+    if (
+      confirmPass === userData.password &&
+      userData.email &&
+      userData.password &&
+      userData.name &&
+      userData.lastname
+    ) {
+      dispatch(userSignupPost(userData));
+    } else {
+      alert("Passwords do not match");
     }
-  }
-  console.log(signupSuccess)
+  };
+  console.log("signupSuccess", signupSuccess);
 
   useEffect(() => {
     document.title = "Signup";
@@ -97,7 +103,7 @@ const Signup = () => {
               placeholder="Confirm Password"
               value={confirmPass}
               name="con_pass"
-              onChange={(e)=> setConfirmPass(e.target.value)}
+              onChange={(e) => setConfirmPass(e.target.value)}
               focusBorderColor="#F7F7F7"
             />
             <Button
