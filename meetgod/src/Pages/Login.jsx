@@ -57,6 +57,12 @@ const Login = () => {
   // console.log("token", token);
   // console.log("isError", isError);
 
+  const handleKeyPress = (e)=>{
+    if(e.key === "Enter"){
+      handleSubmit(e);
+    }
+  }
+
   useEffect(() => {
     if (token && !isError) {
       toast({
@@ -67,9 +73,11 @@ const Login = () => {
         isClosable: true,
         position: "top",
       });
+
       setTimeout(() => {
         navigate(reirectTo);
-      }, 2000);
+      }, 1000);
+
     } else if (isError === "Wrong password") {
       toast({
         title: "Wrong Password",
@@ -150,6 +158,7 @@ const Login = () => {
               bgGradient="linear(to-l, #FFCC57, #F4C50F, #FFCC57)"
               _hover={{ opacity: 0.7 }}
               _focus={{ outline: "none" }}
+              onKeyDown={handleKeyPress}
             >
               Login
             </Button>
