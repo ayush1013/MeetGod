@@ -1,12 +1,4 @@
-import {
-  Box,
-  Flex,
-  Grid,
-  Image,
-  Input,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import HomeIcon from "@material-ui/icons/Home";
 import PostAddSharpIcon from "@material-ui/icons/PostAddSharp";
 import SpaIcon from "@material-ui/icons/Spa";
@@ -16,9 +8,18 @@ import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import ProfileDrawer from "./ProfileDrawer";
 
 const Sections = ({ section, setSection, setIsHover, isHover }) => {
   const { token, userDetails } = useSelector((store) => store.AuthReducer);
+
+  const handleMouseHover = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHover(false);
+  };
 
   return (
     <Flex
@@ -125,51 +126,10 @@ const Sections = ({ section, setSection, setIsHover, isHover }) => {
         </Text>
 
         {isHover && (
-          <Box
-            position={"absolute"}
-            // border="1px solid black"
-            top={"0px"}
-            left={"-80px"}
-            onMouseOver={() => setIsHover(true)}
-            onMouseOut={() => setIsHover(false)}
-          >
-            <Box
-              position="relative"
-              zIndex="10"
-              bgColor="white"
-              mt="56px"
-              w="200px"
-              p="10px"
-              borderRadius={"5px"}
-              boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px"}
-              textAlign={"left"}
-              fontWeight={"500"}
-            >
-              {token ? (
-                <Flex alignItems={"center"} gap="10px"  >
-                  <Image src="profileIcon3.png" w="40px" />
-                  <Text>{userDetails[0].name} {userDetails[0].lastname}</Text>
-                </Flex>
-              ) : (
-                <Box>
-                  <Link to="/login">
-                    <Text>Login</Text>
-                  </Link>
-                  <Link to="/signup">
-                    <Text>Create an Account</Text>
-                  </Link>
-                </Box>
-              )}
-              <Box
-                textAlign={"center"}
-                mt={"1rem"}
-                color={"#FF6F61"}
-                _hover={{ color: "#FF6900" }}
-              >
-                <Link to="">Logout</Link>
-              </Box>
-            </Box>
-          </Box>
+          <ProfileDrawer
+            handleMouseHover={handleMouseHover}
+            handleMouseOut={handleMouseOut}
+          />
         )}
       </Box>
 
