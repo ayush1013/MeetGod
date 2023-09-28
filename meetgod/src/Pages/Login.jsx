@@ -9,7 +9,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { userLoginPost } from "../Redux/AuthReducer/action";
 
 const intialUserData = {
@@ -20,12 +20,16 @@ const intialUserData = {
 const Login = () => {
   const [userData, setUserData] = useState(intialUserData);
   const [confirmPass, setConfirmPass] = useState("");
-  const {token,isLoading,isError} = useSelector((store) => store.AuthReducer);
-  // const isLoading = useSelector((store) => store.AuthReducer.isLoading);
-  // const isError = useSelector((store) => store.AuthReducer.isError);
+  const { token, isLoading, isError } = useSelector(
+    (store) => store.AuthReducer
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toast = useToast();
+  const location = useLocation();
+
+  console.log("location in login", location);
+  const reirectTo = location.state?.redirectPath || "/";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -63,6 +67,9 @@ const Login = () => {
         isClosable: true,
         position: "top",
       });
+      setTimeout(() => {
+        navigate(reirectTo);
+      }, 2000);
     } else if (isError === "Wrong password") {
       toast({
         title: "Wrong Password",

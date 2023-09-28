@@ -8,7 +8,7 @@ const PrivateAuthRoute = ({ children }) => {
   console.log("location in privateRoute:", location);
 
   if (!token) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" state={{redirectPath:location.pathname}} />;
   }
   return children;
 };
