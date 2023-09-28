@@ -7,7 +7,7 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { signupReset, userSignupPost } from "../Redux/AuthReducer/action";
@@ -26,6 +26,7 @@ const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toast = useToast();
+  const buttonPressRef = useRef();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -94,8 +95,18 @@ const Signup = () => {
     }
   }, [signupStatus.signupSuccess]);
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      buttonPressRef.current.click();
+    }
+  };
+
   useEffect(() => {
     document.title = "Signup";
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
   }, []);
 
   return (
@@ -132,6 +143,7 @@ const Signup = () => {
               name="name"
               onChange={handleChange}
               focusBorderColor="#F7F7F7"
+              onKeyDown={handleKeyPress}
             />
             <Input
               placeholder="Last Name"
@@ -139,6 +151,7 @@ const Signup = () => {
               name="lastname"
               onChange={handleChange}
               focusBorderColor="#F7F7F7"
+              onKeyDown={handleKeyPress}
             />
             <Input
               placeholder="Email"
@@ -146,6 +159,7 @@ const Signup = () => {
               name="email"
               onChange={handleChange}
               focusBorderColor="#F7F7F7"
+              onKeyDown={handleKeyPress}
             />
             <Input
               placeholder="Password"
@@ -153,6 +167,7 @@ const Signup = () => {
               name="password"
               onChange={handleChange}
               focusBorderColor="#F7F7F7"
+              onKeyDown={handleKeyPress}
             />
             <Input
               placeholder="Confirm Password"
@@ -160,6 +175,7 @@ const Signup = () => {
               name="con_pass"
               onChange={(e) => setConfirmPass(e.target.value)}
               focusBorderColor="#F7F7F7"
+              onKeyDown={handleKeyPress}
             />
             <Button
               isLoading={signupStatus.isLoading}
@@ -174,6 +190,7 @@ const Signup = () => {
               bgGradient="linear(to-l, #FFCC57, #F4C50F, #FFCC57)"
               _hover={{ opacity: 0.7 }}
               _focus={{ outline: "none" }}
+              ref={buttonPressRef}
             >
               {" "}
               Signup{" "}

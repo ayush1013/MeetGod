@@ -9,7 +9,7 @@ const PrivateAuthRoute = ({ children }) => {
   const [delay, setDelay] = useState(false);
   const toast = useToast();
 
-  console.log("location in privateRoute:", location);
+  // console.log("location in privateRoute:", location);
 
   useEffect(() => {
     if (!token) {

@@ -29,7 +29,8 @@ const Login = () => {
   const location = useLocation();
   const buttonPressRef = useRef(null);
 
-  console.log("location in login", location);
+  // console.log("location in login", location);
+
   const reirectTo = location.state?.redirectPath || "/";
 
   const handleChange = (e) => {
@@ -46,7 +47,7 @@ const Login = () => {
     } else {
       toast({
         title: "Wrong Credentials",
-        description: "Wrong Email or Password",
+        description: "Please fill all the required fields",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -103,6 +104,7 @@ const Login = () => {
 
   useEffect(() => {
     document.title = "Login";
+    
     document.addEventListener("keydown", handleKeyPress);
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
