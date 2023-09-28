@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -27,6 +27,7 @@ const Login = () => {
   const navigate = useNavigate();
   const toast = useToast();
   const location = useLocation();
+  const buttonPressRef = useRef(null);
 
   console.log("location in login", location);
   const reirectTo = location.state?.redirectPath || "/";
@@ -38,7 +39,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(userData, confirmPass);
+    // console.log(userData, confirmPass);
 
     if (userData.email && userData.password) {
       dispatch(userLoginPost(userData));
@@ -57,11 +58,13 @@ const Login = () => {
   // console.log("token", token);
   // console.log("isError", isError);
 
-  const handleKeyPress = (e)=>{
-    if(e.key === "Enter"){
-      handleSubmit(e);
+  const handleKeyPress = (e) => {
+    // console.log(e);
+    if (e.key === "Enter") {
+      e.preventDefault();
+      buttonPressRef.current.click();
     }
-  }
+  };
 
   useEffect(() => {
     if (token && !isError) {
@@ -77,7 +80,6 @@ const Login = () => {
       setTimeout(() => {
         navigate(reirectTo);
       }, 1000);
-
     } else if (isError === "Wrong password") {
       toast({
         title: "Wrong Password",
@@ -101,6 +103,10 @@ const Login = () => {
 
   useEffect(() => {
     document.title = "Login";
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
   }, []);
 
   return (
@@ -137,6 +143,7 @@ const Login = () => {
               name="email"
               onChange={handleChange}
               focusBorderColor="#F7F7F7"
+              onKeyDown={handleKeyPress}
             />
             <Input
               placeholder="Password"
@@ -144,6 +151,7 @@ const Login = () => {
               name="password"
               onChange={handleChange}
               focusBorderColor="#F7F7F7"
+              onKeyDown={handleKeyPress}
             />
             <Button
               isLoading={isLoading}
@@ -158,7 +166,7 @@ const Login = () => {
               bgGradient="linear(to-l, #FFCC57, #F4C50F, #FFCC57)"
               _hover={{ opacity: 0.7 }}
               _focus={{ outline: "none" }}
-              onKeyDown={handleKeyPress}
+              ref={buttonPressRef}
             >
               Login
             </Button>
