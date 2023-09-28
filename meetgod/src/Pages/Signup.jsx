@@ -26,7 +26,7 @@ const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toast = useToast();
-  const buttonPressRef = useRef();
+  const buttonPressRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -97,6 +97,7 @@ const Signup = () => {
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       buttonPressRef.current.click();
     }
   };
@@ -104,9 +105,6 @@ const Signup = () => {
   useEffect(() => {
     document.title = "Signup";
     document.addEventListener("keydown", handleKeyPress);
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
   }, []);
 
   return (
@@ -143,7 +141,6 @@ const Signup = () => {
               name="name"
               onChange={handleChange}
               focusBorderColor="#F7F7F7"
-              onKeyDown={handleKeyPress}
             />
             <Input
               placeholder="Last Name"
@@ -151,7 +148,6 @@ const Signup = () => {
               name="lastname"
               onChange={handleChange}
               focusBorderColor="#F7F7F7"
-              onKeyDown={handleKeyPress}
             />
             <Input
               placeholder="Email"
@@ -159,7 +155,6 @@ const Signup = () => {
               name="email"
               onChange={handleChange}
               focusBorderColor="#F7F7F7"
-              onKeyDown={handleKeyPress}
             />
             <Input
               placeholder="Password"
@@ -167,7 +162,6 @@ const Signup = () => {
               name="password"
               onChange={handleChange}
               focusBorderColor="#F7F7F7"
-              onKeyDown={handleKeyPress}
             />
             <Input
               placeholder="Confirm Password"
@@ -175,7 +169,6 @@ const Signup = () => {
               name="con_pass"
               onChange={(e) => setConfirmPass(e.target.value)}
               focusBorderColor="#F7F7F7"
-              onKeyDown={handleKeyPress}
             />
             <Button
               isLoading={signupStatus.isLoading}

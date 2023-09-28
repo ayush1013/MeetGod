@@ -79,7 +79,7 @@ const Login = () => {
       });
 
       setTimeout(() => {
-        navigate(reirectTo);
+        navigate(reirectTo, { replace: true });
       }, 1000);
     } else if (isError === "Wrong password") {
       toast({
@@ -104,7 +104,7 @@ const Login = () => {
 
   useEffect(() => {
     document.title = "Login";
-    
+
     document.addEventListener("keydown", handleKeyPress);
     return () => {
       document.removeEventListener("keydown", handleKeyPress);

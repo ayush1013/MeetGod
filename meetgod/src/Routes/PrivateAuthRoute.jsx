@@ -26,13 +26,17 @@ const PrivateAuthRoute = ({ children }) => {
         position: "top",
       });
     }
-    console.log("hello")
+    console.log("hello");
   }, [token]);
 
   if (!token) {
     return (
       delay && (
-        <Navigate to="/login" state={{ redirectPath: location.pathname }} />
+        <Navigate
+          to="/login"
+          replace
+          state={{ redirectPath: location.pathname }}
+        />
       )
     );
   }
