@@ -1,18 +1,26 @@
 export const godsArray = [
   // { name: "Lord Vishnu", specialty: "The Preserver of the Cosmos" },
   // { name: "Lord Brahma", specialty: "The Creator of the Universe" },
-  { name: "Lord Shiva", specialty: "The Destroyer and Transformer of Existence" },
+  {
+    name: "Lord Shiva",
+    specialty: "The Destroyer and Transformer of Existence",
+  },
   { name: "Goddess Durga", specialty: "The Invincible Divine Mother" },
   // { name: "Lord Krishna", specialty: "The Divine Melodist and Universal Teacher" },
-  { name: "Lord Rama", specialty: "The Embodiment of Virtue and Righteousness" },
+  {
+    name: "Lord Rama",
+    specialty: "The Embodiment of Virtue and Righteousness",
+  },
   // { name: "Lord Ganesha", specialty: "Remover of Obstacles and Patron of Beginnings" },
-  { name: "Lord Hanuman", specialty: "The Mighty Monkey God and Devotee of Lord Rama" },
+  {
+    name: "Lord Hanuman",
+    specialty: "The Mighty Monkey God and Devotee of Lord Rama",
+  },
   // { name: "Goddess Lakshmi", specialty: "Bestower of Prosperity and Fortune" },
   // { name: "Goddess Saraswati", specialty: "The Source of Knowledge and Artistic Inspiration" },
   // { name: "Goddess Parvati", specialty: "The Divine Consort of Lord Shiva and Mother of the Universe" },
   // { name: "Goddess Kali", specialty: "The Fierce and Compassionate Mother Goddess" },
 ];
-
 
 export const products = [
   {
@@ -80,7 +88,7 @@ export const products = [
     length: 18,
     god_name: "Ganesh",
     width: "2",
-  }
+  },
 ];
 
 export const postData = [
@@ -123,8 +131,7 @@ export const postData = [
     id: 2,
     username: "priya_gupta",
     fullName: "Priya Gupta",
-    profilePic:
-      "https://media.licdn.com/dms/image/C4D03AQEhipmxvOz8rg/profile-displayphoto-shrink_800_800/0/1650488111982?e=1693440000&v=beta&t=pRIjlvTvllqPsZPesTyeKFZMwze5aQ2lTzrlLAUXP2s",
+    profilePic: "Ayush_Verma_Profile_Pic.jpg",
     title: "Second Post",
     content:
       "Goddess Lakshmi is the goddess of wealth, prosperity, and fortune. She is worshipped for financial success and abundance.",
@@ -199,8 +206,7 @@ export const postData = [
     id: 3,
     username: "sandeep_verma",
     fullName: "Sandeep Verma",
-    profilePic:
-      "https://media.licdn.com/dms/image/C4E03AQFxk2ZoLZb-Pg/profile-displayphoto-shrink_800_800/0/1596682043090?e=1693440000&v=beta&t=SYY2L6WmxObdWyO9p-Jg6RxZawvvy0Tt-5ytxujNR7E",
+    profilePic: "Ayush_Verma_Profile_Pic.jpg",
     title: "Third Post",
     content:
       "Lord Shiva is the supreme god, the destroyer of evil, and the transformer. He is worshipped for spiritual enlightenment and inner peace.",

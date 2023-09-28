@@ -70,6 +70,7 @@ const HomeMiddleSection = () => {
         {postData.map((elem) => {
           return (
             <PostsList
+              key={elem.id}
               elem={elem}
               handleLike={handleLike}
               handleComment={handleComment}

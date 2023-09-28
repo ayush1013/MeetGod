@@ -20,9 +20,9 @@ const intialUserData = {
 const Login = () => {
   const [userData, setUserData] = useState(intialUserData);
   const [confirmPass, setConfirmPass] = useState("");
-  const token = useSelector((store) => store.AuthReducer.token);
-  const isLoading = useSelector((store) => store.AuthReducer.isLoading);
-  const isError = useSelector((store) => store.AuthReducer.isError);
+  const {token,isLoading,isError} = useSelector((store) => store.AuthReducer);
+  // const isLoading = useSelector((store) => store.AuthReducer.isLoading);
+  // const isError = useSelector((store) => store.AuthReducer.isError);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toast = useToast();

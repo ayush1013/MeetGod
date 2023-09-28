@@ -15,11 +15,11 @@ const HomeLeftSection = () => {
       w={{ base: "100%", md: "35%", lg: "25%" }}
       display={{ base: "block", md: "block", lg: "block" }}
       // border="1px solid red"
-      h="90vh"
+      h={{base:"auto",md:"90vh",lg:"90vh"}}
       pb="20px"
       top="65px"
-      position="sticky"
-      overflowY="scroll"
+      position={{base:"static",md:"sticky",lg:"sticky"}}
+      overflowY={{base:"none",md:"scroll",lg:"scroll"}}
       sx={{
         "&::-webkit-scrollbar": {
           width: "0px",
@@ -91,8 +91,9 @@ const HomeLeftSection = () => {
         </Text>
         <Grid mt="10px" gap="10px">
           {godsArray.length > 0 &&
-            godsArray?.map((elem) => (
+            godsArray?.map((elem, index) => (
               <Flex
+                key={index}
                 textAlign={"left"}
                 w="fit-content"
                 fontSize="13px"
