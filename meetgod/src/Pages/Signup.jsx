@@ -131,7 +131,7 @@ const Signup = () => {
             <Button colorScheme="red" >
               Logout
             </Button>
-            <Text fontSize="md"  mt={4} color="blue" >
+            <Text fontSize="md"  mt={4} color="blue" cursor={"pointer"}>
               Continue Loged In
             </Text>
           </Box>

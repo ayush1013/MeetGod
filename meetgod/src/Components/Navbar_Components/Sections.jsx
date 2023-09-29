@@ -80,6 +80,8 @@ const Sections = ({ section, setSection, setIsHover, isHover }) => {
           onClick={() => setSection("/spiritual")}
           value="/spiritual"
           textAlign={"center"}
+          position={"relative"}
+          zIndex={"11"}
         >
           <SpaIcon
             style={{
@@ -138,6 +140,8 @@ const Sections = ({ section, setSection, setIsHover, isHover }) => {
           onClick={() => setSection("/products")}
           value="/products"
           textAlign={"center"}
+          position={"relative"}
+          zIndex={"11"}
         >
           <ShoppingCartIcon
             style={{
