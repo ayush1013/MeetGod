@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Flex,
   Grid,
   Image,
   Input,
@@ -11,6 +12,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { signupReset, userSignupPost } from "../Redux/AuthReducer/action";
+import Navbar from "../Components/Navbar_Components/Navbar";
+import MobNav from "../Components/Navbar_Components/MobNav";
 
 const intialUserData = {
   name: "",
@@ -22,7 +25,9 @@ const intialUserData = {
 const Signup = () => {
   const [userData, setUserData] = useState(intialUserData);
   const [confirmPass, setConfirmPass] = useState("");
-  const signupStatus = useSelector((store) => store.AuthReducer);
+  const { token, isLoading, isError, signupSuccess } = useSelector(
+    (store) => store.AuthReducer
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toast = useToast();
@@ -67,11 +72,11 @@ const Signup = () => {
       });
     }
   };
-  console.log("signupSuccess", signupStatus.signupSuccess);
-  console.log("isLoading", signupStatus.isLoading);
+  console.log("signupSuccess", signupSuccess);
+  console.log("isLoading", isLoading);
 
   useEffect(() => {
-    if (signupStatus.signupSuccess === "Successfull") {
+    if (signupSuccess === "Successfull") {
       toast({
         title: "Signup Success",
         description: "You have uccessfully signed up please login",
@@ -82,7 +87,7 @@ const Signup = () => {
       });
       navigate("/login");
       dispatch(signupReset());
-    } else if (signupStatus.signupSuccess === "User already exists") {
+    } else if (signupSuccess === "User already exists") {
       toast({
         title: "Email Already Exists",
         description:
@@ -93,7 +98,7 @@ const Signup = () => {
         position: "top",
       });
     }
-  }, [signupStatus.signupSuccess]);
+  }, [signupSuccess]);
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -106,6 +111,34 @@ const Signup = () => {
     document.title = "Signup";
     document.addEventListener("keydown", handleKeyPress);
   }, []);
+
+  if (token) {
+    return (
+      <Box h="100vh">
+        <Navbar />
+        <MobNav />
+        <Flex justifyContent="center" alignItems="center" h="80%">
+          <Box
+            p={6}
+            boxShadow="md"
+            bg="white"
+            borderRadius="md"
+            textAlign={"center"}
+          >
+            <Text fontSize="xl" mb={4}>
+              You have to Logout first to signup
+            </Text>
+            <Button colorScheme="red" >
+              Logout
+            </Button>
+            <Text fontSize="md"  mt={4} color="blue" >
+              Continue Loged In
+            </Text>
+          </Box>
+        </Flex>
+      </Box>
+    );
+  }
 
   return (
     <Box
@@ -171,7 +204,7 @@ const Signup = () => {
               focusBorderColor="#F7F7F7"
             />
             <Button
-              isLoading={signupStatus.isLoading}
+              isLoading={isLoading}
               loadingText="Signing up..."
               type="submit"
               // display={"block"}
