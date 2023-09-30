@@ -7,12 +7,9 @@ import LocalMallIcon from "@material-ui/icons/LocalMall";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
 import ProfileDrawer from "./ProfileDrawer";
 
 const Sections = ({ section, setSection, setIsHover, isHover }) => {
-  const { token, userDetails } = useSelector((store) => store.AuthReducer);
-
   const handleMouseHover = () => {
     setIsHover(true);
   };

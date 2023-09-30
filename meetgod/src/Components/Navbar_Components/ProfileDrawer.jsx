@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ProfileDrawer = ({ handleMouseHover, handleMouseOut }) => {
   const { token, userDetails } = useSelector((store) => store.AuthReducer);
+
+  useEffect(() => {}, [token, userDetails]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userDetails");
+    window.location.reload();
+  };
 
   return (
     <Box
@@ -50,7 +58,7 @@ const ProfileDrawer = ({ handleMouseHover, handleMouseOut }) => {
           color={"#FF6F61"}
           _hover={{ color: "#FF6900" }}
         >
-          <Link to="">Logout</Link>
+          <Text onClick={handleLogout}>Logout</Text>
         </Box>
       </Box>
     </Box>
